@@ -26,9 +26,14 @@ $(function() {
     event.preventDefault();
 
     var newCat = {
-      name: $("#ca").val().trim(),
-      sleepy: $("[name=sleepy]:checked").val().trim()
+      name: $("#cat-name").val().trim(),
+      weight: $("#cat-weight").val().trim(),
+      alert: $("[name=cat-alert]:checked").val().trim(),
+      notes: $("textarea#cat-notes").val(),
+      location: $("#cat-location").val().trim()
     };
+
+    console.log(newCat);
 
     // Send the POST request.
     $.ajax("/api/cats", {
