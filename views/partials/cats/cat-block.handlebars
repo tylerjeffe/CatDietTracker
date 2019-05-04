@@ -1,9 +1,15 @@
-<li>
-	{{name}}
-
+<li>Cat Data:
+	<br>id: {{cat_id}}
+	<br>name: {{cat_name}} 
+	<br>starting weight: {{cat_starting_weight}}
+	<br>alert flag: {{cat_alert_flag}}
+	<br>notes: {{cat_notes}}
+	<br>
+	<button class="update-data" data-id="{{cat_id}}">select-update</button> 
+<!--
 	<button class="change-sleep" data-id="{{id}}" data-newsleep="{{sleep}}">
 		{{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}}
 	</button>
-
-	<button class="delete-cat" data-id="{{this.id}}">DELETE!</button>
+-->
+	<button class="check-in-check-out" data-id="{{this.cat_id}}">check-in-check-out</button>
 </li>

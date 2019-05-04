@@ -1,37 +1,39 @@
-<h1>Cats!</h1>
+<h1>Cat Diet Tracker</h1>
 
-<h2>Cats that are not sleepy!</h2>
-
+<h2>Current Residents:</h2>
 <ul>
   {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
+    {{> cats/cat-block sleep=false}}
   {{/each}}
 </ul>
 
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Cat</h2>
+<h2>Check-in (add) a Cat</h2>
 <form class="create-form">
 
   <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+    <label for="cat-name">Cat Name:</label>
+    <input type="text" id="cat-name" name="cat-name">
   </div>
 
   <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
+    <label for="cat-weight">Cat Starting Weight:</label>
+    <input type="text" id="cat-weight" name="cat-weight">
+  </div>
+
+  <div class="form-group">
+    <label for="cat-alert">Alert Flag:</label><br>
+    <input type="radio" name="cat-alert" value="0">None<br>
+    <input type="radio" name="cat-alert" value="1">Alert
+  </div>
+
+  <div class="form-group">
+    <label for="cat-notes">Cat Notes:</label><br>
+    <textarea name="cat-notes" id="cat-notes" rows="8" cols="30" placeholder="notes:"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="cat-location">Cat Location:</label>
+    <input type="text" id="cat-location" name="cat-location">
   </div>
 
   <button type="submit">Add Cat</button>

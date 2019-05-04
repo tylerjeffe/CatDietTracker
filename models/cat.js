@@ -7,6 +7,11 @@ var cat = {
       cb(res);
     });
   },
+  one: function(condition, cb) {
+    orm.one("cats", condition, function(res) {
+      cb(res);
+    });
+  },
   // The variables cols and vals are arrays.
   create: function(cols, vals, cb) {
     orm.create("cats", cols, vals, function(res) {
