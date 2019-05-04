@@ -10,32 +10,39 @@ CREATE TABLE cats
 	cat_starting_weight INT NOT NULL,
 	cat_alert_flag BOOLEAN DEFAULT false,
 	cat_notes VARCHAR(255),
+	
+	cat_location_id_fk INT NOT NULL,	/* used to link: 'location' with 'cat' details */
 	PRIMARY KEY (cat_id)
 );
 
 CREATE TABLE servers
 (
 	server_id INT NOT NULL AUTO_INCREMENT,
+	server_username VARCHAR(64) NOT NULL,
+	server_password VARCHAR(255) NOT NULL,
 	server_name VARCHAR(64) NOT NULL,
+
 	PRIMARY KEY (server_id)
 );
 
 CREATE TABLE locations
 (
 	location_id INT NOT NULL AUTO_INCREMENT,
-	kennel_name VARCHAR(64) NOT NULL,
 	room_number INT NOT NULL,
+	kennel_number INT NOT NULL,
+
+	location_cat_id_fk INT NOT NULL, 	/* used to lookup: 'cat' by 'location' */
 	PRIMARY KEY (location_id) 
 );
 
 CREATE TABLE meals
 (
 	meal_id INT NOT NULL AUTO_INCREMENT,
-	date_time_stamp DATETIME NOT NULL,
+	meal_date_time DATETIME NOT NULL,
 
-	cat_id_fk INT NOT NULL,
-	server_id_fk INT NOT NULL,
-	location_id_fk INT NOT NULL,
+	meal_cat_id_fk INT NOT NULL,		/* used to lookup: 'cat' by 'meal' */
+	meal_server_id_fk INT NOT NULL, 	/* used to lookup: 'server' by 'meal' */
+	meal_location_id_fk INT NOT NULL, 	/* used to lookup: 'location' by 'meal' */
 	PRIMARY KEY (meal_id)	
 );
 
@@ -43,7 +50,8 @@ CREATE TABLE meal_contents
 (
 	meal_content_id INT NOT NULL AUTO_INCREMENT,
 	meal_content_description VARCHAR(128) NOT NULL,
-
-	meal_id_fk INT NOT NULL,
+	meal_content_consumed INT NOT NULL,
+	
+	meal_id_fk INT NOT NULL,			/* used to link: 'meal' with 'meal_content' details */
 	PRIMARY KEY (meal_content_id)
 );
