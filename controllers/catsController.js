@@ -39,8 +39,9 @@ router.get("/api/cats/:id", function(req, res) {
       cats: data[0],
       meals: data[1]
     };
-    console.log("Single Cat: hbsObject: " + JSON.stringify(hbsObject));
-    res.render("single-cat-view", hbsObject);
+    console.log("Cat Data (single) - Meal Data (one week): hbsObject: " + JSON.stringify(hbsObject));
+    //res.render("single-cat-view", hbsObject);
+    res.render("cat-view", hbsObject);
   });
 });
 
