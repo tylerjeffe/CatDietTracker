@@ -53,3 +53,45 @@ VALUES
 	-- residency date/time data based on served - consumed 'meals' 
 	-- update cat_starting_weight to DECIMAL datatype
  
+ /*
+ CREATE TABLE meals
+(
+	meal_id INT NOT NULL AUTO_INCREMENT,
+	meal_date_time DATETIME NOT NULL,
+
+	meal_cat_id_fk INT NOT NULL,		 used to lookup: 'cat' by 'meal' 
+	meal_server_id_fk INT NOT NULL,		 used to lookup: 'server' by 'meal' 
+	meal_location_id_fk INT NOT NULL, 	 used to lookup: 'location' by 'meal' 
+	PRIMARY KEY (meal_id)	
+);
+*/
+
+INSERT INTO meals
+	(meal_id, meal_date_time, meal_cat_id_fk, meal_server_id_fk, meal_location_id_fk)
+VALUES 
+	(1, "2019-04-28T06:00:00", 1, 1001, 101),
+	(2, "2019-04-28T18:00:00", 1, 1001, 101),
+	(3, "2019-05-01T06:00:00", 1, 1001, 101),
+	(4, "2019-05-01T18:00:00", 1, 1001, 101);
+
+
+/*
+CREATE TABLE meal_contents
+(
+	meal_content_id INT NOT NULL AUTO_INCREMENT,
+	meal_content_description VARCHAR(128) NOT NULL,
+	meal_content_consumed INT NOT NULL,
+	
+	meal_id_fk INT NOT NULL,			 used to link: 'meal' with 'meal_content' details 
+	PRIMARY KEY (meal_content_id)
+);
+ */
+
+INSERT INTO meal_contents
+	(meal_content_id, meal_content_description, meal_content_consumed, meal_id_fk)
+VALUES 
+	(1, "Wet Food - Premium", 4, 1),
+	(2, "Dry Food - Generic", 2, 2),
+	(3, "Wet Food - Generic", 3, 3),
+	(4, "Dry Food - Premium", 3, 4);
+

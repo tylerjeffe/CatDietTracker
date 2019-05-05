@@ -21,16 +21,17 @@ $(function() {
     );
   });
 
-  $(".create-form").on("submit", function(event) {
+  $(".add-cat").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var newCat = {
       name: $("#cat-name").val().trim(),
       weight: $("#cat-weight").val().trim(),
-      alert: $("[name=cat-alert]:checked").val().trim(),
-      notes: $("textarea#cat-notes").val(),
-      location: $("#cat-location").val().trim()
+      alert: 0,
+      notes: $("textarea#cat-notes").val().trim(),
+      room: $("#cat-location-room").val().trim(),
+      kennel: $("#cat-location-kennel").val().trim()
     };
 
     console.log(newCat);

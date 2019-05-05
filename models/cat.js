@@ -12,6 +12,11 @@ var cat = {
       cb(res);
     });
   },
+  one_date: function(route_cat_id, route_date, cb) {
+    orm.one_date("cats", route_cat_id, route_date, function(res) {
+      cb(res);
+    });
+  },
   // The variables cols and vals are arrays.
   create: function(cols, vals, cb) {
     orm.create("cats", cols, vals, function(res) {

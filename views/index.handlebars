@@ -8,7 +8,7 @@
 </ul>
 
 <h2>Check-in (add) a Cat</h2>
-<form class="create-form">
+<form class="add-cat">
 
   <div class="form-group">
     <label for="cat-name">Cat Name:</label>
@@ -21,19 +21,18 @@
   </div>
 
   <div class="form-group">
-    <label for="cat-alert">Alert Flag:</label><br>
-    <input type="radio" name="cat-alert" value="0">None<br>
-    <input type="radio" name="cat-alert" value="1">Alert
-  </div>
-
-  <div class="form-group">
     <label for="cat-notes">Cat Notes:</label><br>
     <textarea name="cat-notes" id="cat-notes" rows="8" cols="30" placeholder="notes:"></textarea>
   </div>
 
   <div class="form-group">
-    <label for="cat-location">Cat Location:</label>
-    <input type="text" id="cat-location" name="cat-location">
+    <label for="cat-location-room">Cat Location - Room #:</label>
+    <input type="text" id="cat-location-room" name="cat-location-room">
+  </div>
+
+  <div class="form-group">
+    <label for="cat-location-kennel">Cat Location - Kennel #:</label>
+    <input type="text" id="cat-location-kennel" name="cat-location-kennel">
   </div>
 
   <button type="submit">Add Cat</button>
