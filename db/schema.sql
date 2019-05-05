@@ -1,4 +1,4 @@
--- File: schema.sql
+/* File: schema.sql */
 
 CREATE DATABASE cat_diet_tracker_db;
 USE cat_diet_tracker_db;

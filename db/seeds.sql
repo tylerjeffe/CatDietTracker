@@ -1,5 +1,6 @@
-### Seeds
 /*
+### Seeds
+
 CREATE TABLE cats
 (
 	cat_id INT NOT NULL AUTO_INCREMENT,
