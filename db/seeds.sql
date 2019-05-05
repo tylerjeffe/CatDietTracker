@@ -14,16 +14,16 @@ CREATE TABLE cats
 */
 
 INSERT INTO cats 
-	(cat_name, cat_starting_weight, cat_alert_flag, cat_notes, cat_location_id_fk)
+	(cat_name, cat_starting_weight, cat_alert_flag, cat_notes, cat_location_id_fk, cat_location_room, cat_location_kennel)
 VALUES 	
-	("Snowball", 9.2, false, "Awesome Cat", 1),
-	("Duke", 9.2, false, "Awesome Cat", 2),
-	("Fluffy", 9.2, false, "Awesome Cat", 3),
-	("Oreo", 9.2, false, "Awesome Cat", 4),
-	("Griffin", 10.3, false, "Awesome Cat", 5),
-	("James", 10.3, false, "Awesome Cat", 6),
-	("Hobie", 10.3, false, "Awesome Cat", 7),
-	("Theo", 10.3, false, "Awesome Cat", 8);
+	("Snowball", 9.2, false, "Awesome Cat", 101, 1, 1),
+	("Duke", 9.2, false, "Awesome Cat", 102, 1, 2),
+	("Fluffy", 9.2, false, "Awesome Cat", 103, 1,3),
+	("Oreo", 9.2, false, "Awesome Cat", 104, 1, 4),
+	("Griffin", 10.3, false, "Awesome Cat", 105, 1, 5),
+	("James", 10.3, false, "Awesome Cat", 106, 1, 6),
+	("Hobie", 10.3, false, "Awesome Cat", 107, 1, 7),
+	("Theo", 10.3, false, "Awesome Cat", 108, 1, 8);
 
 /*	
 CREATE TABLE locations
