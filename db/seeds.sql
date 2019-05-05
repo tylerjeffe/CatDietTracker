@@ -17,6 +17,7 @@ CREATE TABLE cats
 INSERT INTO cats 
 	(cat_name, cat_starting_weight, cat_alert_flag, cat_notes, cat_location_id_fk, cat_location_room, cat_location_kennel)
 VALUES 	
+
 	("Snowball", 9.2, false, "Awesome Cat", 101, 1, 1),
 	("Duke", 9.2, false, "Awesome Cat", 102, 1, 2),
 	("Fluffy", 9.2, false, "Awesome Cat", 103, 1,3),
