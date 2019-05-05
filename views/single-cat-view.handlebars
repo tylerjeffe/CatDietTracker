@@ -7,7 +7,6 @@
   {{/each}}
 </ul>
 
-{{#each cats}}
 <table>
     <thead>
         <tr>
@@ -15,17 +14,19 @@
         </tr>
     </thead>
     <tbody>
+        {{#each cats}}        
         <tr>
             <td>Cat Name: {{this.cat_name}}</td>
             <td>Room #: {{this.cat_location_room}} - Kennel #: {{this.cat_location_kennel}}</td>
         </tr>
+        {{/each}}
+
+        {{#each meals}}
         <tr>
-            <td>Sunday:</td>
-            <td>Meals: <button>Add Meal Item</button>
-
-            </td>
+            <td>Sunday: {{this.meal_content_description}}</td>
+            <td>Meals: <button>Add Meal Item</button></td>
         </tr>
-
+        {{/each}}
     </tbody>
 </table>
-{{/each}}
+

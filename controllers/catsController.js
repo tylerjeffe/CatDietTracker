@@ -32,11 +32,12 @@ router.get("/api/cats", function(req, res) {
 // show single cat data at '/api/cats/:id'
 router.get("/api/cats/:id", function(req, res) {
 
-  var condition = "" + req.params.id;
+  var route_cat_id = req.params.id;
 
-  cat.one(condition, function(data) {
+  cat.one(route_cat_id, function(data) {
     var hbsObject = {
-      cats: data
+      cats: data[0],
+      meals: data[1]
     };
     console.log("Single Cat: hbsObject: " + JSON.stringify(hbsObject));
     res.render("single-cat-view", hbsObject);
@@ -45,6 +46,7 @@ router.get("/api/cats/:id", function(req, res) {
 
 
 // show single cat (:id) data for a particular week (:date) at '/api/cats/:id/:date'
+/*
 router.get("/api/cats/:id/:date", function(req, res) {
 
   var route_cat_id = "" + req.params.id;
@@ -58,7 +60,7 @@ router.get("/api/cats/:id/:date", function(req, res) {
     res.render("single-cat-view", hbsObject);
   });
 });
-
+*/
 
 // add new cat via form -> submit button -> post
 router.post("/api/cats", function(req, res) {
