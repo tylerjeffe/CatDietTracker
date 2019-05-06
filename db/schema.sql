@@ -1,4 +1,4 @@
--- File: schema.sql
+/* File: schema.sql */
 
 CREATE DATABASE cat_diet_tracker_db;
 USE cat_diet_tracker_db;
@@ -15,8 +15,8 @@ CREATE TABLE cats
 	cat_location_id_fk INT NOT NULL,	/* used to link: 'location' with 'cat' details */
 
 	/* probably a better design */
-	--cat_location_room INT NOT NULL,
-	--cat_location_kennel INT NOT NULL,
+	cat_location_room INT NOT NULL,
+	cat_location_kennel INT NOT NULL,
 
 	PRIMARY KEY (cat_id)
 );

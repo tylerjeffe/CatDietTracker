@@ -1,0 +1,32 @@
+<h1>Cat Diet Tracker</h1>
+
+<h2>single-cat-view.handlebars:</h2>
+<ul>
+  {{#each cats}}
+    {{> cats/cat-block}}
+  {{/each}}
+</ul>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Weekly 'single-cat' Log:</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each cats}}        
+        <tr>
+            <td>Cat Name: {{this.cat_name}}</td>
+            <td>Room #: {{this.cat_location_room}} - Kennel #: {{this.cat_location_kennel}}</td>
+        </tr>
+        {{/each}}
+
+        {{#each meals}}
+        <tr>
+            <td>Sunday: {{this.meal_content_description}}</td>
+            <td>Meals: <button>Add Meal Item</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+

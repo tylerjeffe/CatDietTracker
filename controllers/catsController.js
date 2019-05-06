@@ -24,7 +24,7 @@ router.get("/api/cats", function(req, res) {
     var hbsObject = {
       cats: data
     };
-    console.log(hbsObject);
+    console.log("All Cats: hbsObject " + hbsObject);
     res.render("index", hbsObject);
   });
 });
@@ -32,24 +32,43 @@ router.get("/api/cats", function(req, res) {
 // show single cat data at '/api/cats/:id'
 router.get("/api/cats/:id", function(req, res) {
 
-  var condition = "" + req.params.id;
+  var route_cat_id = req.params.id;
 
-  cat.one(condition, function(data) {
+  cat.one(route_cat_id, function(data) {
     var hbsObject = {
-      cats: data
+      cats: data[0],
+      meals: data[1]
     };
-    console.log("Single hbsObject: " + hbsObject);
-    res.render("index", hbsObject);
+    console.log("Cat Data (single) - Meal Data (one week): hbsObject: " + JSON.stringify(hbsObject));
+    //res.render("single-cat-view", hbsObject);
+    res.render("cat-view", hbsObject);
   });
 });
 
 
+// show single cat (:id) data for a particular week (:date) at '/api/cats/:id/:date'
+/*
+router.get("/api/cats/:id/:date", function(req, res) {
+
+  var route_cat_id = "" + req.params.id;
+  var route_date = req.params.date;
+
+  cat.one(route_cat_id, route_date, function(data) {
+    var hbsObject = {
+      cats: data
+    };
+    console.log("Single Cat with Date: hbsObject: " + JSON.stringify(hbsObject));
+    res.render("single-cat-view", hbsObject);
+  });
+});
+*/
+
 // add new cat via form -> submit button -> post
 router.post("/api/cats", function(req, res) {
   cat.create([
-    "cat_name", "cat_starting_weight", "cat_alert_flag", "cat_notes", "cat_location_id_fk"
+    "cat_name", "cat_starting_weight", "cat_alert_flag", "cat_notes", "cat_location_id_fk", "cat_location_room", "cat_location_kennel"
   ], [
-    req.body.name, req.body.weight, req.body.alert, req.body.notes, req.body.location
+    req.body.name, req.body.weight, 0, req.body.notes, -1, req.body.room, req.body.kennel
   ], function(result) {
     // Send back the ID of the new cat
     res.json({ id: result.insertId });
