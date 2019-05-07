@@ -1,12 +1,9 @@
 var express = require("express");
-
 var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
 var cat = require("../models/cat.js");
-
 var moment = require("moment");
-
 
 // Create all our routes and set up logic within those routes where required - Original
 // show all cats at '/'
@@ -50,16 +47,11 @@ router.get("/api/cats/:id", function(req, res) {
       meals_Sat: data[7]
     }
 
-    // sort out 'meal' data
+    // check - sort out 'meal' data
     console.log("\nMeal Data:\n" + JSON.stringify(data[1]));
-
-
-
     console.log("Cat Data (single) - Meal Data (one week): hbsObject: " + JSON.stringify(hbsObject));
 
-    // refactor - move to support file
-    console.log("Begin Preparing Data for 'cat-view.handlebars' use . . .");
-
+    // MOMENT.JS DATETIME TESTING
     // working with week() - Sunday - Saturday 
     var tempDateTime = "2019-04-29T01:00:00.000Z";
     var dateTimeObject = moment(tempDateTime).format("YYYY-MM-DD");
@@ -82,7 +74,7 @@ router.get("/api/cats/:id", function(req, res) {
       today: moment().toString(),
       to_date: to_date.toString(),
     });
-
+    // END MOMENT.JS DATETIME TESTING
 
     //res.render("single-cat-view", hbsObject);
     res.render("cat-view", hbsObject);
