@@ -5,8 +5,10 @@ var router = express.Router();
 // Import the model (cat.js) to use its database functions.
 var cat = require("../models/cat.js");
 
-// Create all our routes and set up logic within those routes where required - Original
+var moment = require("moment");
 
+
+// Create all our routes and set up logic within those routes where required - Original
 // show all cats at '/'
 router.get("/", function(req, res) {
   cat.all(function(data) {
@@ -35,11 +37,53 @@ router.get("/api/cats/:id", function(req, res) {
   var route_cat_id = req.params.id;
 
   cat.one(route_cat_id, function(data) {
+
+    // 'handlebars' object - refer to 'key' names in *.handlebars files
     var hbsObject = {
       cats: data[0],
-      meals: data[1]
-    };
+      meals_Sun: data[1],
+      meals_Mon: data[2],
+      meals_Tue: data[3],
+      meals_Wed: data[4],
+      meals_Thu: data[5],
+      meals_Fri: data[6],
+      meals_Sat: data[7]
+    }
+
+    // sort out 'meal' data
+    console.log("\nMeal Data:\n" + JSON.stringify(data[1]));
+
+
+
     console.log("Cat Data (single) - Meal Data (one week): hbsObject: " + JSON.stringify(hbsObject));
+
+    // refactor - move to support file
+    console.log("Begin Preparing Data for 'cat-view.handlebars' use . . .");
+
+    // working with week() - Sunday - Saturday 
+    var tempDateTime = "2019-04-29T01:00:00.000Z";
+    var dateTimeObject = moment(tempDateTime).format("YYYY-MM-DD");
+
+    console.log("dateTimeObject: " + dateTimeObject);
+    var weeknumber = moment("12-25-1995", "MM-DD-YYYY").week();
+    console.log("Weeknumber: " + weeknumber);
+
+    console.log("Beginning of Week: " + moment().startOf("week"));
+    console.log("End of Week: " + moment().endOf("week"));
+
+    // get week range
+    const today = moment();
+    const from_date = moment(today).startOf('week');
+    const to_date = moment(today).endOf('week');
+//    const from_date = moment(tempDateTime).startOf('week');
+//    const to_date = moment(tempDateTime).endOf('week');
+    console.log({
+      from_date: from_date.toString(),
+      today: moment().toString(),
+      to_date: to_date.toString(),
+    });
+
+
     //res.render("single-cat-view", hbsObject);
     res.render("cat-view", hbsObject);
   });
@@ -76,12 +120,11 @@ router.post("/api/cats", function(req, res) {
 });
 
 router.put("/api/cats/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-
+  var condition = req.params.id;
   console.log("condition" + condition);
 
   cat.update({
-    sleepy: req.body.sleepy
+    sleepy: req.body.meal-item-consumed-value
   }, condition, function(result) {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404

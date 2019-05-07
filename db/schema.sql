@@ -61,3 +61,10 @@ CREATE TABLE meal_contents
 	meal_id_fk INT NOT NULL,			/* used to link: 'meal' with 'meal_content' details */
 	PRIMARY KEY (meal_content_id)
 );
+
+CREATE TABLE meal_content_items (
+	meal_content_item_id INT NOT NULL AUTO_INCREMENT,
+	meal_content_item_description VARCHAR(128) NOT NULL,
+
+	PRIMARY KEY (meal_content_item_id)
+);
