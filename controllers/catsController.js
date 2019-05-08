@@ -3,6 +3,7 @@ var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
 var cat = require("../models/cat.js");
+var meal_content_item = require("../models/meal_content_item.js");
 var moment = require("moment");
 
 // Create all our routes and set up logic within those routes where required - Original
@@ -140,7 +141,16 @@ router.delete("/api/cats/:id", function(req, res) {
   });
 });
 
-
+// get all meal_content_items at '/api/meals/meal_content_items'
+router.get("/api/meal_content_items", function(req, res) {
+  meal_content_item.all(function(data) {
+    var hbsObject = {
+      mealItems: data
+    };
+    console.log("All meal_content_items: hbsObject " + hbsObject);
+    res.render("meal_content_items", hbsObject);
+  });
+});
 
 // Export routes for server.js to use.
 module.exports = router;

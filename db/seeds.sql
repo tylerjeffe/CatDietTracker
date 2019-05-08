@@ -158,3 +158,12 @@ VALUES
 	(34, "A34 - Premium", 3, 17),
 	(35, "A35 - Premium", 3, 18),
 	(36, "A36 - Premium", 3, 18);
+
+/*
+CREATE TABLE meal_content_items (
+	meal_content_item_id INT NOT NULL AUTO_INCREMENT,
+	meal_content_item_description VARCHAR(128) NOT NULL,
+
+	PRIMARY KEY (meal_content_item_id)
+);
+*/
