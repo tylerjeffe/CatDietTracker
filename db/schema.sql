@@ -14,7 +14,7 @@ CREATE TABLE cats
 	/* refactor below */	
 	cat_location_id_fk INT NOT NULL,	/* used to link: 'location' with 'cat' details */
 
-	/* probably a better design */
+	/* probably a better design via lookup using cat_location_id_fk above */
 	cat_location_room INT NOT NULL,
 	cat_location_kennel INT NOT NULL,
 

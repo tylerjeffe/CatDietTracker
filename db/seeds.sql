@@ -167,3 +167,12 @@ CREATE TABLE meal_content_items (
 	PRIMARY KEY (meal_content_item_id)
 );
 */
+
+INSERT INTO meal_content_items
+	(meal_content_item_id, meal_content_item_description)
+VALUES 
+	(1, "Friskies"),
+	(2, "Purina"),
+	(3, "Science Diet"),
+	(4, "Wiskas");
+	

@@ -6,3 +6,15 @@
     {{this.meal_content_item_id}} {{this.meal_content_item_description}} <br>
   {{/each}}
 </ul>
+
+<!--    <select id="sel" onchange="show(this)">
+        <option value="">Select </option>
+    </select>
+-->
+
+  <select id="sel" onchange="show(this)">
+  {{#each mealItems}}
+    <option value="{{this.meal_content_item_id}}">{{this.meal_content_item_description}}</option>
+  {{/each}}
+  </select>
+

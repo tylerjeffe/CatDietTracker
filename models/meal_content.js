@@ -3,28 +3,28 @@ var orm = require("../config/orm.js");
 
 var meal_content = {
   all: function(cb) {
-    orm.all("meals", function(res) {
+    orm.all("meal_contents", function(res) {
       cb(res);
     });
   },
   one: function(route_meal_content_id, cb) {
-    orm.one("meals", route_meal_content_id, function(res) {
+    orm.one("meal_contents", route_meal_content_id, function(res) {
       cb(res);
     });
   },
   // The variables cols and vals are arrays.
   create: function(cols, vals, cb) {
-    orm.create("meals", cols, vals, function(res) {
+    orm.create("meal_contents", cols, vals, function(res) {
       cb(res);
     });
   },
   update: function(objColVals, condition, cb) {
-    orm.update("meals", objColVals, condition, function(res) {
+    orm.update("meal_contents", objColVals, condition, function(res) {
       cb(res);
     });
   },
   delete: function(condition, cb) {
-    orm.delete("meals", condition, function(res) {
+    orm.delete("meal_contents", condition, function(res) {
       cb(res);
     });
   }

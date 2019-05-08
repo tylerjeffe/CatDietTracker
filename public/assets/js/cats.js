@@ -68,7 +68,7 @@ $(function() {
   });
 
   // refactor - move to 'meal_content.js' ???
-  $(".update-consumed-value").on("click", function(event) {
+  $(".update-consumed-value").on("submit", function(event) {
 
     // refector - switch to 'radio buttons' - may not be necessary
     event.preventDefault();
@@ -82,6 +82,12 @@ $(function() {
     var newConsumedValue = {
       value: consumedValue 
     };
+
+    var newConVal = {
+      conVal: $("#5").val()
+    };
+
+    console.log("VALUE = " + $("#5").text());
 
     console.log("\nNewConsumedValue: " + newConsumedValue.value);
 
