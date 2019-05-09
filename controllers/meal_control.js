@@ -46,13 +46,14 @@ meal_routes.post("/api/meals", function(req, res) {
   });
 });
 
+// update: 'meal' with new data
 meal_routes.put("/api/meals/:id", function(req, res) {
   var condition = req.params.id;
   console.log("condition" + condition);
 
   meal.update({
     // UPDATE BELOW - TESTING ONLY
-    cat_name: req_body.meal-item-consumed-value
+    //cat_name: req_body.meal-item-consumed-value
     // sleepy: req.body.meal-item-consumed-value
   }, condition, function(result) {
     if (result.changedRows == 0) {
@@ -64,12 +65,12 @@ meal_routes.put("/api/meals/:id", function(req, res) {
   });
 });
 
+// delete: 'meal'
 meal_routes.delete("/api/meals/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   meal.delete(condition, function(result) {
     if (result.affectedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
@@ -77,14 +78,14 @@ meal_routes.delete("/api/meals/:id", function(req, res) {
   });
 });
 
-// get all meal_content_items at '/api/meals/meal_content_items'
+// read: 'meal_content_items' (all)
 meal_routes.get("/api/meal_content_items", function(req, res) {
   meal_content_item.all(function(data) {
-    var hbsObject = {
-      mealItems: data
+    var data_object = {
+      meal_items: data
     };
-    console.log("All meal_content_items: hbsObject " + hbsObject);
-    res.render("meal_content_items", hbsObject);
+    console.log("all meal_content_items: data_object " + JSON.stringify(data_object));
+    res.render("meal_content_items", data_object);
   });
 });
 

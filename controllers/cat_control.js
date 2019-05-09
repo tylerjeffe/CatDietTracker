@@ -6,30 +6,31 @@ var cat = require("../models/cat.js");
 var meal_content_item = require("../models/meal_content_item.js");
 var moment = require("moment");
 
-// Create all our routes and set up logic within those routes where required - Original
-// show all cats at '/'
+// create routes - set up logic
+
+// read: 'cat' data (all)
 cat_routes.get("/", function(req, res) {
   cat.all(function(data) {
-    var hbsObject = {
+    var data_object = {
       cats: data
     };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
+    console.log("data_object returned from backend - sending to frontend\n\t" + data_object);
+    res.render("index", data_object);
   });
 });
 
-// get all cats at '/api/cats' (all)
+// read: 'cat' data (all)
 cat_routes.get("/api/cats", function(req, res) {
   cat.all(function(data) {
-    var hbsObject = {
+    var data_object = {
       cats: data
     };
-    console.log("All Cats: hbsObject " + hbsObject);
-    res.render("index", hbsObject);
+    console.log("data_object: data returned from backend - sending to frontend\n\t" + data_object);
+    res.render("index", data_object);
   });
 });
 
-// get single cat data and week of meal data at '/api/cats/:id' (one)
+// read: 'cat' data (one)
 cat_routes.get("/api/cats/:id", function(req, res) {
 
   var route_cat_id = req.params.id;
@@ -38,7 +39,7 @@ cat_routes.get("/api/cats/:id", function(req, res) {
 
     // refector - collect meal data using - mealsController / models
     // 'handlebars' object - refer to 'key' names in *.handlebars files
-    var hbsObject = {
+    var data_object = {
       cats: data[0],
       meals_Sun: data[1],
       meals_Mon: data[2],
@@ -51,7 +52,7 @@ cat_routes.get("/api/cats/:id", function(req, res) {
 
     // check - sort out 'meal' data
     console.log("\nMeal Data:\n" + JSON.stringify(data[1]));
-    console.log("Cat Data (single) - Meal Data (one week): hbsObject: " + JSON.stringify(hbsObject));
+    console.log("Cat Data (single) - Meal Data (one week): data_object: " + JSON.stringify(data_object));
 
     // MOMENT.JS DATETIME TESTING
     // working with week() - Sunday - Saturday 
@@ -69,8 +70,8 @@ cat_routes.get("/api/cats/:id", function(req, res) {
     const today = moment();
     const from_date = moment(today).startOf('week');
     const to_date = moment(today).endOf('week');
-//    const from_date = moment(tempDateTime).startOf('week');
-//    const to_date = moment(tempDateTime).endOf('week');
+    //    const from_date = moment(tempDateTime).startOf('week');
+    //    const to_date = moment(tempDateTime).endOf('week');
     console.log({
       from_date: from_date.toString(),
       today: moment().toString(),
@@ -79,12 +80,12 @@ cat_routes.get("/api/cats/:id", function(req, res) {
     // END MOMENT.JS DATETIME TESTING
 
     //res.render("single-cat-view", hbsObject);
-    res.render("cat-view", hbsObject);
+    res.render("cat-view", data_object);
   });
 });
 
 
-// add new cat via form -> submit button -> post (create)
+// create: new 'cat' (via form -> submit button -> post)
 cat_routes.post("/api/cats", function(req, res) {
   cat.create([
     "cat_name", "cat_starting_weight", "cat_alert_flag", "cat_notes", "cat_location_id_fk", "cat_location_room", "cat_location_kennel"
@@ -96,6 +97,7 @@ cat_routes.post("/api/cats", function(req, res) {
   });
 });
 
+// update: 'cat' data
 cat_routes.put("/api/cats/:id", function(req, res) {
   var condition = req.params.id;
   console.log("condition" + condition);
@@ -106,7 +108,6 @@ cat_routes.put("/api/cats/:id", function(req, res) {
     // sleepy: req.body.meal-item-consumed-value
   }, condition, function(result) {
     if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
@@ -114,12 +115,12 @@ cat_routes.put("/api/cats/:id", function(req, res) {
   });
 });
 
+// delete: 'cat' data
 cat_routes.delete("/api/cats/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   cat.delete(condition, function(result) {
     if (result.affectedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
@@ -127,5 +128,5 @@ cat_routes.delete("/api/cats/:id", function(req, res) {
   });
 });
 
-// Export routes for server.js to use.
+// export routes for server.js to use.
 module.exports = cat_routes;
