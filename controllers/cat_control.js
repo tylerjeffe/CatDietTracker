@@ -14,7 +14,7 @@ cat_routes.get("/", function(req, res) {
     var data_object = {
       cats: data
     };
-    console.log("data_object returned from backend - sending to frontend\n\t" + data_object);
+    console.log("data_object: data returned from backend - sending to frontend\n\t" + data_object);
     res.render("index", data_object);
   });
 });
@@ -102,9 +102,11 @@ cat_routes.put("/api/cats/:id", function(req, res) {
   var condition = req.params.id;
   console.log("condition" + condition);
 
+  //console.log("\nRequest Body:\n" + JSON.stringify(req.body));
+
   cat.update({
     // UPDATE BELOW - TESTING ONLY
-    cat_name: req_body.meal-item-consumed-value
+    cat_name: req.body.value
     // sleepy: req.body.meal-item-consumed-value
   }, condition, function(result) {
     if (result.changedRows == 0) {
@@ -113,6 +115,7 @@ cat_routes.put("/api/cats/:id", function(req, res) {
       res.status(200).end();
     }
   });
+
 });
 
 // delete: 'cat' data

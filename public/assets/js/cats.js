@@ -73,37 +73,44 @@ $(function() {
     // refector - switch to 'radio buttons' - may not be necessary
     event.preventDefault();
 
+    console.log("inside 'update-consumed-value' event handler . . . ");
+
+    console.log("current content (this):\n" + this);
+
+    var consumed_vals = document.getElementsByName("consumed-value");
+
+    var consumed_value = -1;
+
+    for (let index = 0, length = consumed_vals.length; index < length; ++index) {
+      if (consumed_vals[index].checked) {
+        //alert("radio button value = " + conVal[index].value);
+        consumed_value = consumed_vals[index].value;
+        break;
+      }
+    }
+
     var id = $(this).data("id");
-    //alert(id);
-    var consumedValue = $(this).data("meal-item-consumed-value");
-    //alert(consumedValue);
-    console.log("Current ID: " + id + "\tConsumed Value: " + consumedValue);
+
+    console.log("Current ID: " + id + "\tConsumed Value: " + consumed_value);
 
     var newConsumedValue = {
-      value: consumedValue 
+      value: consumed_value
     };
-
-    var newConVal = {
-      conVal: $("#5").val()
-    };
-
-    console.log("VALUE = " + $("#5").text());
 
     console.log("\nNewConsumedValue: " + newConsumedValue.value);
 
     // Send the PUT request.
-    /*
+    
     $.ajax("/api/cats/" + id, {
       type: "PUT",
       data: newConsumedValue
     }).then(
       function() {
-        console.log("new consumed value: ", consumedValue);
         // Reload the page to get the updated list
         location.reload();
       }
     );
-    */
+    
   });
 
 });

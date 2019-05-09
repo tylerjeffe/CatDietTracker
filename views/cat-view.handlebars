@@ -48,10 +48,33 @@
                         meal_id_fk: {{this.meal_id_fk}} <br>
                     </td>
                     <td>
-                        <form class="update-consumed-value">
-                            <input type="text" name="meal-item-consumed-value" id="{{this.meal_content_id}}" />
-                            <input type="hidden" data-id="{{this.meal_content_id}}" name="current-meal-content-id" />
+                        <form class="update-consumed-value" data-id="{{this.meal_content_id}}">
+
+                            <!-- <input type="text" name="meal-item-consumed-value" id="{{this.meal_content_id}}" /> -->
+                            <input type="hidden" name="current-meal-content-id" />
                           	<!-- <button class="update-data" data-id="{{this.cat_id}}">select-update</button> --> 
+
+                            <p>Consumption Value:</p>
+                            <div>
+                              <input type="radio" id="one" name="consumed-value" value="1"
+                                     checked>
+                              <label for="one">One</label>
+                            </div>
+
+                            <div>
+                              <input type="radio" id="two" name="consumed-value" value="2">
+                              <label for="two">Two</label>
+                            </div>
+
+                            <div>
+                              <input type="radio" id="three" name="consumed-value" value="3">
+                              <label for="three">Three</label>
+                            </div>
+
+                            <div>
+                              <input type="radio" id="four" name="consumed-value" value="4">
+                              <label for="four">Four</label>
+                            </div>
 
                             <button type="submit">Update</button>
                         </form>
