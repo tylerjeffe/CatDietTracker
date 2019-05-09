@@ -27,6 +27,9 @@ app.use(location_routes);
 var meal_routes = require("./controllers/meal_control.js");
 app.use(meal_routes);
 
+var meal_content_routes = require("./controllers/meal_content_control.js");
+app.use(meal_content_routes);
+
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
   // Log (server-side) when our server has started

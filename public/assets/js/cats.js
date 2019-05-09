@@ -1,28 +1,6 @@
 
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-/*  
-  $(".change-sleep").on("click", function(event) {
-    var id = $(this).data("id");
-    var newSleep = $(this).data("newsleep");
-
-    var newSleepState = {
-      sleepy: newSleep
-    };
-
-    // Send the PUT request.
-    $.ajax("/api/cats/" + id, {
-      type: "PUT",
-      data: newSleepState
-    }).then(
-      function() {
-        console.log("changed sleep to", newSleep);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-*/
 
   $(".add-cat").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
@@ -45,7 +23,7 @@ $(function() {
       data: newCat
     }).then(
       function() {
-        console.log("created new cat");
+        console.log("new cat added . . .");
         // Reload the page to get the updated list
         location.reload();
       }
@@ -69,17 +47,14 @@ $(function() {
 
   // refactor - move to 'meal_content.js' ???
   $(".update-consumed-value").on("submit", function(event) {
-
-    // refector - switch to 'radio buttons' - may not be necessary
     event.preventDefault();
 
     console.log("inside 'update-consumed-value' event handler . . . ");
+    console.log("current context (this):\n" + JSON.stringify(this));
 
-    console.log("current content (this):\n" + this);
-
-    var consumed_vals = document.getElementsByName("consumed-value");
-
-    var consumed_value = -1;
+    const id = $(this).data("id");
+    let consumed_vals = document.getElementsByName("consumed-value-"+id),
+        consumed_value = -1;
 
     for (let index = 0, length = consumed_vals.length; index < length; ++index) {
       if (consumed_vals[index].checked) {
@@ -88,25 +63,19 @@ $(function() {
         break;
       }
     }
-
-    var id = $(this).data("id");
-
     console.log("Current ID: " + id + "\tConsumed Value: " + consumed_value);
 
-    var newConsumedValue = {
+    var new_consumed_value = {
       value: consumed_value
     };
-
-    console.log("\nNewConsumedValue: " + newConsumedValue.value);
+    console.log("\nNewConsumedValue: " + new_consumed_value.value);
 
     // Send the PUT request.
-    
-    $.ajax("/api/cats/" + id, {
+    $.ajax("/api/meal_contents/" + id, {
       type: "PUT",
-      data: newConsumedValue
+      data: new_consumed_value
     }).then(
       function() {
-        // Reload the page to get the updated list
         location.reload();
       }
     );
