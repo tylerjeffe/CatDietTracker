@@ -1,0 +1,25 @@
+<div class="container card">
+    <div class="row">
+        <div class="col">
+            {{!-- empty space --}}
+        </div>
+        <div class="col">
+            <p>Select Room:</p>
+            <select id="location-selection">
+                <option value="1">Room 1</option>
+                <option value="2">Room 2</option>
+                <option value="3">Room 3</option>
+                
+        </div>
+        <div class="col">
+            <button id="close" class="add-cat"><img src="../circle-add-512.png"></button>
+            <p>Add Cat</p>
+        </div>
+    </div>
+    <div class="row">
+        {{#each locations}}
+        <div class="col">
+            {{this.location_cat_id_fk}}
+        </div>
+    </div>
+</div>

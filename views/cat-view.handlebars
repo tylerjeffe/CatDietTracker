@@ -6,7 +6,7 @@
             {{#each cats}}
             <h2 class="cat-name">{{this.cat_name}}</h2>
             <form class="feed-cat data-id=" {{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}>
-            <div class=" col meal_service" data-id="{{this.cat_id}}" id="{{this.cat_id}}"
+            <div class="col meal_service" data-id="{{this.cat_id}}" id="{{this.cat_id}}"
                 name="meal-item-{{this.cat_id}}">
                 {{/each}}
                 <p>Current Meal Selection:
@@ -19,16 +19,17 @@
                     <button type="submit">Feed {{this.cat_name}}</button>
                     {{/each}}
                 </p>
+                </form>
+            </div>  
             </form>
-
-        </div>
+        
         <div class="col-md-6">
             {{#each cats}}
             <h2 id="cat-location">Location: Room #: {{this.cat_location_room}} - Kennel #: {{this.cat_location_kennel}}
             </h2>
         </div>
         {{/each}}
-    </div>
+        </div>
     <div class="row">
         <div class="col">
             <h2>Sun</h2>
@@ -53,19 +54,6 @@
         </div>
     </div>
     <div class="row">
-
-
-        <div class="col">
-            <span>
-                {{#each meals_Sun}}
-                {{this.meal_content_description}} <br>
-                {{this.meal_content_consumed}}
-                {{> meal_contents/meal_contents_block}}
-                {{/each}}
-
-
-            </span>
-        </div>
         <div class="col">
             <span> {{#each meals_Sun}}
                 {{this.meal_content_description}} <br>
@@ -116,6 +104,7 @@
                 {{/each}}</span>
         </div>
     </div>
+
 </div>
 {{!-- <div class="row">
     <div class="col">
