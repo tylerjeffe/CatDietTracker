@@ -1,42 +1,45 @@
 var express = require("express");
-var router = express.Router();
+var cat_routes = express.Router();
 
 // Import the model (cat.js) to use its database functions.
 var cat = require("../models/cat.js");
+var meal_content_item = require("../models/meal_content_item.js");
 var moment = require("moment");
 
-// Create all our routes and set up logic within those routes where required - Original
-// show all cats at '/'
-router.get("/", function(req, res) {
+// create routes - set up logic
+
+// read: 'cat' data (all)
+cat_routes.get("/", function(req, res) {
   cat.all(function(data) {
-    var hbsObject = {
+    var data_object = {
       cats: data
     };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
+    console.log("data_object: data returned from backend - sending to frontend\n\t" + data_object);
+    res.render("index", data_object);
   });
 });
 
-// show all cats at '/api/cats'
-router.get("/api/cats", function(req, res) {
+// read: 'cat' data (all)
+cat_routes.get("/api/cats", function(req, res) {
   cat.all(function(data) {
-    var hbsObject = {
+    var data_object = {
       cats: data
     };
-    console.log("All Cats: hbsObject " + hbsObject);
-    res.render("index", hbsObject);
+    console.log("data_object: data returned from backend - sending to frontend\n\t" + data_object);
+    res.render("index", data_object);
   });
 });
 
-// show single cat data at '/api/cats/:id'
-router.get("/api/cats/:id", function(req, res) {
+// read: 'cat' data (one)
+cat_routes.get("/api/cats/:id", function(req, res) {
 
   var route_cat_id = req.params.id;
 
   cat.one(route_cat_id, function(data) {
 
+    // refector - collect meal data using - mealsController / models
     // 'handlebars' object - refer to 'key' names in *.handlebars files
-    var hbsObject = {
+    var data_object = {
       cats: data[0],
       meals_Sun: data[1],
       meals_Mon: data[2],
@@ -44,12 +47,15 @@ router.get("/api/cats/:id", function(req, res) {
       meals_Wed: data[4],
       meals_Thu: data[5],
       meals_Fri: data[6],
-      meals_Sat: data[7]
+      meals_Sat: data[7],
+      meal_items: data[8]
     }
+
+    console.log("meal_items" + JSON.stringify(data[8]));
 
     // check - sort out 'meal' data
     console.log("\nMeal Data:\n" + JSON.stringify(data[1]));
-    console.log("Cat Data (single) - Meal Data (one week): hbsObject: " + JSON.stringify(hbsObject));
+    console.log("Cat Data (single) - Meal Data (one week): data_object: " + JSON.stringify(data_object));
 
     // MOMENT.JS DATETIME TESTING
     // working with week() - Sunday - Saturday 
@@ -67,8 +73,8 @@ router.get("/api/cats/:id", function(req, res) {
     const today = moment();
     const from_date = moment(today).startOf('week');
     const to_date = moment(today).endOf('week');
-//    const from_date = moment(tempDateTime).startOf('week');
-//    const to_date = moment(tempDateTime).endOf('week');
+    //    const from_date = moment(tempDateTime).startOf('week');
+    //    const to_date = moment(tempDateTime).endOf('week');
     console.log({
       from_date: from_date.toString(),
       today: moment().toString(),
@@ -77,30 +83,13 @@ router.get("/api/cats/:id", function(req, res) {
     // END MOMENT.JS DATETIME TESTING
 
     //res.render("single-cat-view", hbsObject);
-    res.render("cat-view", hbsObject);
+    res.render("cat-view", data_object);
   });
 });
 
 
-// show single cat (:id) data for a particular week (:date) at '/api/cats/:id/:date'
-/*
-router.get("/api/cats/:id/:date", function(req, res) {
-
-  var route_cat_id = "" + req.params.id;
-  var route_date = req.params.date;
-
-  cat.one(route_cat_id, route_date, function(data) {
-    var hbsObject = {
-      cats: data
-    };
-    console.log("Single Cat with Date: hbsObject: " + JSON.stringify(hbsObject));
-    res.render("single-cat-view", hbsObject);
-  });
-});
-*/
-
-// add new cat via form -> submit button -> post
-router.post("/api/cats", function(req, res) {
+// create: new 'cat' (via form -> submit button -> post)
+cat_routes.post("/api/cats", function(req, res) {
   cat.create([
     "cat_name", "cat_starting_weight", "cat_alert_flag", "cat_notes", "cat_location_id_fk", "cat_location_room", "cat_location_kennel"
   ], [
@@ -111,28 +100,33 @@ router.post("/api/cats", function(req, res) {
   });
 });
 
-router.put("/api/cats/:id", function(req, res) {
+// update: 'cat' data
+cat_routes.put("/api/cats/:id", function(req, res) {
   var condition = req.params.id;
   console.log("condition" + condition);
 
+  //console.log("\nRequest Body:\n" + JSON.stringify(req.body));
+
   cat.update({
-    sleepy: req.body.meal-item-consumed-value
+    // UPDATE BELOW - TESTING ONLY
+    cat_name: req.body.value
+    // sleepy: req.body.meal-item-consumed-value
   }, condition, function(result) {
     if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
     }
   });
+
 });
 
-router.delete("/api/cats/:id", function(req, res) {
+// delete: 'cat' data
+cat_routes.delete("/api/cats/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   cat.delete(condition, function(result) {
     if (result.affectedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
@@ -140,7 +134,5 @@ router.delete("/api/cats/:id", function(req, res) {
   });
 });
 
-
-
-// Export routes for server.js to use.
-module.exports = router;
+// export routes for server.js to use.
+module.exports = cat_routes;

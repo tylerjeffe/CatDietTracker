@@ -1,28 +1,6 @@
 
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-/*  
-  $(".change-sleep").on("click", function(event) {
-    var id = $(this).data("id");
-    var newSleep = $(this).data("newsleep");
-
-    var newSleepState = {
-      sleepy: newSleep
-    };
-
-    // Send the PUT request.
-    $.ajax("/api/cats/" + id, {
-      type: "PUT",
-      data: newSleepState
-    }).then(
-      function() {
-        console.log("changed sleep to", newSleep);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-*/
 
   $(".add-cat").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
@@ -45,7 +23,7 @@ $(function() {
       data: newCat
     }).then(
       function() {
-        console.log("created new cat");
+        console.log("new cat added . . .");
         // Reload the page to get the updated list
         location.reload();
       }
@@ -68,36 +46,48 @@ $(function() {
   });
 
   // refactor - move to 'meal_content.js' ???
-  $(".update-consumed-value").on("click", function(event) {
-
-    // refector - switch to 'radio buttons' - may not be necessary
+  $(".update-consumed-value").on("submit", function(event) {
     event.preventDefault();
 
-    var id = $(this).data("id");
-    //alert(id);
-    var consumedValue = $(this).data("meal-item-consumed-value");
-    //alert(consumedValue);
-    console.log("Current ID: " + id + "\tConsumed Value: " + consumedValue);
+    console.log("inside 'update-consumed-value' event handler . . . ");
+    console.log("current context (this):\n" + JSON.stringify(this));
 
-    var newConsumedValue = {
-      value: consumedValue 
+    const id = $(this).data("id");
+    let consumed_vals = document.getElementsByName("consumed-value-"+id),
+        consumed_value = -1;
+
+    for (let index = 0, length = consumed_vals.length; index < length; ++index) {
+      if (consumed_vals[index].checked) {
+        //alert("radio button value = " + conVal[index].value);
+        consumed_value = consumed_vals[index].value;
+        break;
+      }
+    }
+    console.log("Current ID: " + id + "\tConsumed Value: " + consumed_value);
+
+    var new_consumed_value = {
+      value: consumed_value
     };
-
-    console.log("\nNewConsumedValue: " + newConsumedValue.value);
+    console.log("\nNewConsumedValue: " + new_consumed_value.value);
 
     // Send the PUT request.
-    /*
-    $.ajax("/api/cats/" + id, {
+    $.ajax("/api/meal_contents/" + id, {
       type: "PUT",
-      data: newConsumedValue
+      data: new_consumed_value
     }).then(
       function() {
-        console.log("new consumed value: ", consumedValue);
-        // Reload the page to get the updated list
         location.reload();
       }
     );
-    */
+  });
+
+  $(".meal-service").on("submit", function(event) {
+    event.preventDefault();
+
+    console.log("inside .meal-service event handler . . .");
+
+    const id = $(this).data("id");
+
   });
 
 });

@@ -1,0 +1,24 @@
+<!-- file: meal_contents_block.handlebars -->
+<form class="update-consumed-value" data-id="{{this.meal_content_id}}" id="{{this.meal_content_id}}" name="consumed-value-form-{{this.meal_content_id}}">
+    <!-- <input type="text" name="meal-item-consumed-value" id="{{this.meal_content_id}}" /> -->
+  	<!-- <button class="update-data" data-id="{{this.cat_id}}">select-update</button> --> 
+    <p>Consumption Value:</p>
+    <div>
+      <input type="radio" id="one" name="consumed-value-{{this.meal_content_id}}" value="1"
+             checked>
+      <label for="one">One</label>
+    </div>
+    <div>
+      <input type="radio" id="two" name="consumed-value-{{this.meal_content_id}}" value="2">
+      <label for="two">Two</label>
+    </div>
+    <div>
+      <input type="radio" id="three" name="consumed-value-{{this.meal_content_id}}" value="3">
+      <label for="three">Three</label>
+    </div>
+    <div>
+      <input type="radio" id="four" name="consumed-value-{{this.meal_content_id}}" value="4">
+      <label for="four">Four</label>
+    </div>
+    <button type="submit" id="submit-button-{{this.meal_content_id}}">Update</button>
+</form>

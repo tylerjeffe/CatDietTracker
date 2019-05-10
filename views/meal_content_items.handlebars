@@ -1,0 +1,20 @@
+<h1>Cat Diet Tracker</h1>
+
+<h2>Current meal_content_items:</h2>
+<ul>
+  {{#each meal_items}}
+    {{this.meal_content_item_id}} {{this.meal_content_item_description}} <br>
+  {{/each}}
+</ul>
+
+<!--    <select id="sel" onchange="show(this)">
+        <option value="">Select </option>
+    </select>
+-->
+
+  <select id="meal-content-item-selection">
+  {{#each meal_items}}
+    <option value="{{this.meal_content_item_id}}">{{this.meal_content_item_description}}</option>
+  {{/each}}
+  </select>
+
