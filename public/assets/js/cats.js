@@ -79,7 +79,15 @@ $(function() {
         location.reload();
       }
     );
-    
+  });
+
+  $(".meal-service").on("submit", function(event) {
+    event.preventDefault();
+
+    console.log("inside .meal-service event handler . . .");
+
+    const id = $(this).data("id");
+
   });
 
 });

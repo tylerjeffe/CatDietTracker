@@ -47,8 +47,11 @@ cat_routes.get("/api/cats/:id", function(req, res) {
       meals_Wed: data[4],
       meals_Thu: data[5],
       meals_Fri: data[6],
-      meals_Sat: data[7]
+      meals_Sat: data[7],
+      meal_items: data[8]
     }
+
+    console.log("meal_items" + JSON.stringify(data[8]));
 
     // check - sort out 'meal' data
     console.log("\nMeal Data:\n" + JSON.stringify(data[1]));
