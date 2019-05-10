@@ -53,22 +53,69 @@ var orm = {
   one: function(tableInput, route_cat_id, cb) {
 
     // original
-    var queryString1 = "SELECT * FROM " + tableInput + " WHERE cat_id =" + route_cat_id + ";";
+    var queryStringCat = "SELECT * FROM " + tableInput + " WHERE cat_id =" + route_cat_id + ";";
   
     //temp queryString
     // refactor - need to add / return 'weekly meal data' for 'target week'
 
-    var queryString2 = 
+    var date1 = "2019-04-28",
+        date2 = "2019-05-01";
+
+    // Daily Meal Log - Query String Root
+    const queryStringMealsRoot = 
+      "SELECT m1.meal_id, m1.meal_date_time, m1.meal_cat_id_fk, m1.meal_server_id_fk, m1.meal_location_id_fk,"
+            +"mc1.meal_content_id, mc1.meal_content_description, mc1.meal_content_consumed, mc1.meal_id_fk " +
+      "FROM  meals m1, meal_contents mc1 " + 
+      "WHERE mc1.meal_id_fk = m1.meal_id " + "AND m1.meal_cat_id_fk=" + route_cat_id + " ";
+/*
+      "AND m1.meal_date_time >= ? AND m1.meal_date_time <= ? " + 
+      "ORDER BY m1.meal_id;";
+*/
+
+    var queryStringSun = queryStringMealsRoot +
+                       "AND m1.meal_date_time >= '2019-05-05' AND m1.meal_date_time <= '2019-05-06' " + 
+                       "ORDER BY m1.meal_id;";
+    var queryStringMon = queryStringMealsRoot +
+                       "AND m1.meal_date_time >= '2019-05-06' AND m1.meal_date_time <= '2019-05-07' " + 
+                       "ORDER BY m1.meal_id;";
+    var queryStringTue = queryStringMealsRoot +
+                       "AND m1.meal_date_time >= '2019-05-07' AND m1.meal_date_time <= '2019-05-08' " + 
+                       "ORDER BY m1.meal_id;";
+    var queryStringWed = queryStringMealsRoot +
+                       "AND m1.meal_date_time >= '2019-05-08' AND m1.meal_date_time <= '2019-05-09' " + 
+                       "ORDER BY m1.meal_id;";
+    var queryStringThu = queryStringMealsRoot +
+                       "AND m1.meal_date_time >= '2019-05-09' AND m1.meal_date_time <= '2019-05-10' " + 
+                       "ORDER BY m1.meal_id;";
+    var queryStringFri = queryStringMealsRoot +
+                       "AND m1.meal_date_time >= '2019-05-10' AND m1.meal_date_time <= '2019-05-11' " + 
+                       "ORDER BY m1.meal_id;";
+    var queryStringSat = queryStringMealsRoot +
+                       "AND m1.meal_date_time >= '2019-05-11' AND m1.meal_date_time <= '2019-05-12' " + 
+                       "ORDER BY m1.meal_id;";
+
+
+
+/*
+                       var queryString3 = 
       "SELECT m1.meal_id, m1.meal_date_time, m1.meal_cat_id_fk, m1.meal_server_id_fk, m1.meal_location_id_fk,"
              +"mc1.meal_content_id, mc1.meal_content_description, mc1.meal_content_consumed, mc1.meal_id_fk " +
       "FROM  meals m1, meal_contents mc1 " + 
-      "WHERE mc1.meal_id_fk = m1.meal_id " + "AND m1.meal_cat_id_fk=" + route_cat_id + " " +
+      "WHERE mc1.meal_id_fk = m1.meal_id " + "AND m1.meal_cat_id_fk=" + route_cat_id + " " + 
+        "AND m1.meal_date_time >= '2019-05-01' AND m1.meal_date_time <= '2019-05-02' " + 
       "ORDER BY m1.meal_id;";
+*/
 
-    var queryString = queryString1 + queryString2;
+    const queryString = queryStringCat + queryStringSun + queryStringMon + queryStringTue + queryStringWed + 
+                        queryStringThu + queryStringFri + queryStringSat;
 
-    console.log("one() queryString = " + queryString);
+    //console.log("\n\nqueryString1 = " + queryString1);
+    //console.log("\n\nqueryString2 = " + queryString2);
+    //console.log("\n\nqueryString3 = " + queryString3);
 
+    // use moment.js to advance through the days of the week ???
+
+    //connection.query(mealsQueryStringRoot,[date1, date2], function(err, result) {
     connection.query(queryString, function(err, result) {
       if (err) throw err;
 
