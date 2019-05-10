@@ -32,6 +32,25 @@
         </tr>
         {{/each}}
 
+        <hr>
+        {{#each cats}}
+        <form class="meal_service" data-id="{{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}">
+        {{/each}}
+            <p>Current Meal Selection:
+            <select id="meal-content-item-selection">
+                {{#each meal_items}}
+                    <option value="{{this.meal_content_item_id}}">{{this.meal_content_item_description}}</option>
+                {{/each}}
+            </select>
+            
+            {{#each cats}}
+                <button type="submit">Feed {{this.cat_name}}</button>
+            {{/each}}
+            </p>
+        </form>
+        
+        <hr>
+
         {{#each meals_Sun}}
                 <tr>
                     <td colspan="2">Sunday: <br>
@@ -44,17 +63,11 @@
                         Meal Content Data: (single item) <br>
                         meal_content_id: {{this.meal_content_id}} <br>
                         meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumer}} <br>
+                        meal_content_consumed: {{this.meal_content_consumed}} <br>
                         meal_id_fk: {{this.meal_id_fk}} <br>
                     </td>
                     <td>
-                        <form class="update-consumed-value">
-                            <input type="text" id="meal-item-consumed-value" name="meal-item-consumed-value" />
-                            <input type="hidden" data-id="{{this.meal_content_id}}" name="current-meal-content-id" />
-                          	<!-- <button class="update-data" data-id="{{this.cat_id}}">select-update</button> --> 
-
-                            <button type="submit">Update</button>
-                        </form>
+                        {{> meal_contents/meal_contents_block}}
                     </td>
                     <!-- <td>Meals: <button>Add Meal Item</button</td> -->
                 </tr>
@@ -71,8 +84,11 @@
                         Meal Content Data: (single item) <br>
                         meal_content_id: {{this.meal_content_id}} <br>
                         meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumer}} <br>
+                        meal_content_consumed: {{this.meal_content_consumed}} <br>
                         meal_id_fk: {{this.meal_id_fk}} <br>
+                    </td>
+                    <td>
+                       {{> meal_contents/meal_contents_block}}
                     </td>
                     <!-- <td>Meals: <button>Add Meal Item</button</td> -->
                 </tr>
@@ -89,8 +105,11 @@
                         Meal Content Data: (single item) <br>
                         meal_content_id: {{this.meal_content_id}} <br>
                         meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumer}} <br>
+                        meal_content_consumed: {{this.meal_content_consumed}} <br>
                         meal_id_fk: {{this.meal_id_fk}} <br>
+                    </td>
+                    <td>
+                        {{> meal_contents/meal_contents_block}}
                     </td>
                     <!-- <td>Meals: <button>Add Meal Item</button</td> -->
                 </tr>
@@ -107,8 +126,11 @@
                         Meal Content Data: (single item) <br>
                         meal_content_id: {{this.meal_content_id}} <br>
                         meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumer}} <br>
+                        meal_content_consumed: {{this.meal_content_consumed}} <br>
                         meal_id_fk: {{this.meal_id_fk}} <br>
+                    </td>
+                    <td>
+                        {{> meal_contents/meal_contents_block}}
                     </td>
                     <!-- <td>Meals: <button>Add Meal Item</button</td> -->
                 </tr>
@@ -125,8 +147,11 @@
                         Meal Content Data: (single item) <br>
                         meal_content_id: {{this.meal_content_id}} <br>
                         meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumer}} <br>
+                        meal_content_consumed: {{this.meal_content_consumed}} <br>
                         meal_id_fk: {{this.meal_id_fk}} <br>
+                    </td>
+                    <td>
+                        {{> meal_contents/meal_contents_block}}
                     </td>
                     <!-- <td>Meals: <button>Add Meal Item</button</td> -->
                 </tr>
@@ -143,8 +168,11 @@
                         Meal Content Data: (single item) <br>
                         meal_content_id: {{this.meal_content_id}} <br>
                         meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumer}} <br>
+                        meal_content_consumed: {{this.meal_content_consumed}} <br>
                         meal_id_fk: {{this.meal_id_fk}} <br>
+                    </td>
+                    <td>
+                        {{> meal_contents/meal_contents_block}}
                     </td>
                     <!-- <td>Meals: <button>Add Meal Item</button</td> -->
                 </tr>
@@ -161,8 +189,11 @@
                         Meal Content Data: (single item) <br>
                         meal_content_id: {{this.meal_content_id}} <br>
                         meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumer}} <br>
+                        meal_content_consumed: {{this.meal_content_consumed}} <br>
                         meal_id_fk: {{this.meal_id_fk}} <br>
+                    </td>
+                    <td>
+                        {{> meal_contents/meal_contents_block}}
                     </td>
                     <!-- <td>Meals: <button>Add Meal Item</button</td> -->
                 </tr>

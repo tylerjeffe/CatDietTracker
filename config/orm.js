@@ -94,7 +94,7 @@ var orm = {
                        "AND m1.meal_date_time >= '2019-05-11' AND m1.meal_date_time <= '2019-05-12' " + 
                        "ORDER BY m1.meal_id;";
 
-
+    var queryStringMealItems = "SELECT * FROM meal_content_items;";
 
 /*
                        var queryString3 = 
@@ -107,7 +107,7 @@ var orm = {
 */
 
     const queryString = queryStringCat + queryStringSun + queryStringMon + queryStringTue + queryStringWed + 
-                        queryStringThu + queryStringFri + queryStringSat;
+                        queryStringThu + queryStringFri + queryStringSat + queryStringMealItems;
 
     //console.log("\n\nqueryString1 = " + queryString1);
     //console.log("\n\nqueryString2 = " + queryString2);
