@@ -1,203 +1,166 @@
 <h1>Cat Diet Tracker</h1>
 
-<h2>cat-view.handlebars:</h2>
-
-<h2>Cat:</h2>
-<ul>
-  {{#each cats}}
-    {{> cats/cat-block}}
-  {{/each}}
-</ul>
-
-<!--
-<h2>Meals:</h2>
-<ul>
-  {{#each meals}}
-    {{> meals/meal-block}}
-  {{/each}}
-</ul>
--->
-
-<table>
-    <thead>
-        <tr>
-            <th colspan="3">Cat View - Log:</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each cats}}        
-        <tr>
-            <td>Cat Name: {{this.cat_name}}</td>
-            <td>Room #: {{this.cat_location_room}} - Kennel #: {{this.cat_location_kennel}}</td>
-        </tr>
-        {{/each}}
-
-        <hr>
-        {{#each cats}}
-        <form class="meal_service" data-id="{{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}">
-        {{/each}}
-            <p>Current Meal Selection:
-            <select id="meal-content-item-selection">
-                {{#each meal_items}}
-                    <option value="{{this.meal_content_item_id}}">{{this.meal_content_item_description}}</option>
-                {{/each}}
-            </select>
-            
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
             {{#each cats}}
-                <button type="submit">Feed {{this.cat_name}}</button>
-            {{/each}}
-            </p>
-        </form>
-        
-        <hr>
+            <h2 class="cat-name">{{this.cat_name}}</h2>
+            <form class="feed-cat data-id=" {{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}>
+            <div class=" col meal_service" data-id="{{this.cat_id}}" id="{{this.cat_id}}"
+                name="meal-item-{{this.cat_id}}">
+                {{/each}}
+                <p>Current Meal Selection:
+                    <select id="meal-content-item-selection">
+                        {{#each meal_items}}
+                        <option value="{{this.meal_content_item_id}}">{{this.meal_content_item_description}}</option>
+                        {{/each}}
+                    </select>
+                    {{#each cats}}
+                    <button type="submit">Feed {{this.cat_name}}</button>
+                    {{/each}}
+                </p>
+            </form>
 
-        {{#each meals_Sun}}
-                <tr>
-                    <td colspan="2">Sunday: <br>
-                        MEAL DATA: <br>
-                        meal_id: {{this.meal_id}} <br>
-                        meal_date_time: {{this.meal_date_time}} <br>
-                        meal_cat_id_fk: {{this.meal_cat_id_fk}} <br>
-                        meal_server_id_fk: {{this.meal_server_id_fk}} <br>
-                        meal_location_id_fk: {{this.meal_location_id_fk}} <br><br>
-                        Meal Content Data: (single item) <br>
-                        meal_content_id: {{this.meal_content_id}} <br>
-                        meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumed}} <br>
-                        meal_id_fk: {{this.meal_id_fk}} <br>
-                    </td>
-                    <td>
-                        {{> meal_contents/meal_contents_block}}
-                    </td>
-                    <!-- <td>Meals: <button>Add Meal Item</button</td> -->
-                </tr>
+        </div>
+        <div class="col-md-6">
+            {{#each cats}}
+            <h2 id="cat-location">Location: Room #: {{this.cat_location_room}} - Kennel #: {{this.cat_location_kennel}}
+            </h2>
+        </div>
         {{/each}}
-        {{#each meals_Mon}}
-                <tr>
-                    <td>Monday: <br>
-                        MEAL DATA: <br>
-                        meal_id: {{this.meal_id}} <br>
-                        meal_date_time: {{this.meal_date_time}} <br>
-                        meal_cat_id_fk: {{this.meal_cat_id_fk}} <br>
-                        meal_server_id_fk: {{this.meal_server_id_fk}} <br>
-                        meal_location_id_fk: {{this.meal_location_id_fk}} <br><br>
-                        Meal Content Data: (single item) <br>
-                        meal_content_id: {{this.meal_content_id}} <br>
-                        meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumed}} <br>
-                        meal_id_fk: {{this.meal_id_fk}} <br>
-                    </td>
-                    <td>
-                       {{> meal_contents/meal_contents_block}}
-                    </td>
-                    <!-- <td>Meals: <button>Add Meal Item</button</td> -->
-                </tr>
-        {{/each}}
-        {{#each meals_Tue}}
-                <tr>
-                    <td>Tuesday: <br>
-                        MEAL DATA: <br>
-                        meal_id: {{this.meal_id}} <br>
-                        meal_date_time: {{this.meal_date_time}} <br>
-                        meal_cat_id_fk: {{this.meal_cat_id_fk}} <br>
-                        meal_server_id_fk: {{this.meal_server_id_fk}} <br>
-                        meal_location_id_fk: {{this.meal_location_id_fk}} <br><br>
-                        Meal Content Data: (single item) <br>
-                        meal_content_id: {{this.meal_content_id}} <br>
-                        meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumed}} <br>
-                        meal_id_fk: {{this.meal_id_fk}} <br>
-                    </td>
-                    <td>
-                        {{> meal_contents/meal_contents_block}}
-                    </td>
-                    <!-- <td>Meals: <button>Add Meal Item</button</td> -->
-                </tr>
-        {{/each}}
-        {{#each meals_Wed}}
-                <tr>
-                    <td>Wednesday: <br>
-                        MEAL DATA: <br>
-                        meal_id: {{this.meal_id}} <br>
-                        meal_date_time: {{this.meal_date_time}} <br>
-                        meal_cat_id_fk: {{this.meal_cat_id_fk}} <br>
-                        meal_server_id_fk: {{this.meal_server_id_fk}} <br>
-                        meal_location_id_fk: {{this.meal_location_id_fk}} <br><br>
-                        Meal Content Data: (single item) <br>
-                        meal_content_id: {{this.meal_content_id}} <br>
-                        meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumed}} <br>
-                        meal_id_fk: {{this.meal_id_fk}} <br>
-                    </td>
-                    <td>
-                        {{> meal_contents/meal_contents_block}}
-                    </td>
-                    <!-- <td>Meals: <button>Add Meal Item</button</td> -->
-                </tr>
-        {{/each}}
-        {{#each meals_Thu}}
-                <tr>
-                    <td>Thursday: <br>
-                        MEAL DATA: <br>
-                        meal_id: {{this.meal_id}} <br>
-                        meal_date_time: {{this.meal_date_time}} <br>
-                        meal_cat_id_fk: {{this.meal_cat_id_fk}} <br>
-                        meal_server_id_fk: {{this.meal_server_id_fk}} <br>
-                        meal_location_id_fk: {{this.meal_location_id_fk}} <br><br>
-                        Meal Content Data: (single item) <br>
-                        meal_content_id: {{this.meal_content_id}} <br>
-                        meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumed}} <br>
-                        meal_id_fk: {{this.meal_id_fk}} <br>
-                    </td>
-                    <td>
-                        {{> meal_contents/meal_contents_block}}
-                    </td>
-                    <!-- <td>Meals: <button>Add Meal Item</button</td> -->
-                </tr>
-        {{/each}}
-        {{#each meals_Fri}}
-                <tr>
-                    <td>Friday: <br>
-                        MEAL DATA: <br>
-                        meal_id: {{this.meal_id}} <br>
-                        meal_date_time: {{this.meal_date_time}} <br>
-                        meal_cat_id_fk: {{this.meal_cat_id_fk}} <br>
-                        meal_server_id_fk: {{this.meal_server_id_fk}} <br>
-                        meal_location_id_fk: {{this.meal_location_id_fk}} <br><br>
-                        Meal Content Data: (single item) <br>
-                        meal_content_id: {{this.meal_content_id}} <br>
-                        meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumed}} <br>
-                        meal_id_fk: {{this.meal_id_fk}} <br>
-                    </td>
-                    <td>
-                        {{> meal_contents/meal_contents_block}}
-                    </td>
-                    <!-- <td>Meals: <button>Add Meal Item</button</td> -->
-                </tr>
-        {{/each}}
-        {{#each meals_Sat}}
-                <tr>
-                    <td>Saturday: <br>
-                        MEAL DATA: <br>
-                        meal_id: {{this.meal_id}} <br>
-                        meal_date_time: {{this.meal_date_time}} <br>
-                        meal_cat_id_fk: {{this.meal_cat_id_fk}} <br>
-                        meal_server_id_fk: {{this.meal_server_id_fk}} <br>
-                        meal_location_id_fk: {{this.meal_location_id_fk}} <br><br>
-                        Meal Content Data: (single item) <br>
-                        meal_content_id: {{this.meal_content_id}} <br>
-                        meal_content_description: {{this.meal_content_description}} <br>
-                        meal_content_consumed: {{this.meal_content_consumed}} <br>
-                        meal_id_fk: {{this.meal_id_fk}} <br>
-                    </td>
-                    <td>
-                        {{> meal_contents/meal_contents_block}}
-                    </td>
-                    <!-- <td>Meals: <button>Add Meal Item</button</td> -->
-                </tr>
-        {{/each}}
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Sunday</h2>
+        </div>
+        <div class="col">
+            <h2>Monday</h2>
+        </div>
+        <div class="col">
+            <h2>Tuesday</h2>
+        </div>
+        <div class="col">
+            <h2>Wednesday</h2>
+        </div>
+        <div class="col">
+            <h2>Thursday</h2>
+        </div>
+        <div class="col">
+            <h2>Friday</h2>
+        </div>
+        <div class="col">
+            <h2>Saturday</h2>
+        </div>
+    </div>
+    <div class="row">
 
-    </tbody>
-</table>
+
+        <div class="col">
+            <span>
+                {{#each meals_Sun}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}
+
+
+            </span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Sun}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Mon}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Tue}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Wed}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Thu}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Fri}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Sat}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+    </div>
+</div>
+{{!-- <div class="row">
+    <div class="col">
+      <span id="meal-score-1"></span>
+    </div>
+    <div class="col">
+      <span id="meal-score-2"></span>
+    </div>
+    <div class="col">
+      <span id="meal-score-3"></span>
+    </div>
+    <div class="col">
+      <span id="meal-score-4"></span>
+    </div>
+    <div class="col">
+      <span id="meal-score-5"></span>
+    </div>
+    <div class="col">
+      <span id="meal-score-6"></span>
+    </div>
+    <div class="col">
+      <span id="meal-score-7"></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span id="weight-1"></span>
+    </div>
+    <div class="col">
+      <span id="weight-2"></span>
+    </div>
+    <div class="col">
+      <span id="weight-3"></span>
+    </div>
+    <div class="col">
+      <span id="weight-4"></span>
+    </div>
+    <div class="col">
+      <span id="weight-5"></span>
+    </div>
+    <div class="col">
+      <span id="weight-6"></span>
+    </div>
+    <div class="col">
+      <span id="weight-7"></span>
+    </div>
+  </div>
+</div> --}}
