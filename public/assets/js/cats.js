@@ -49,6 +49,7 @@ $(function() {
   $(".update-consumed-value").on("submit", function(event) {
     event.preventDefault();
 
+    console.log("testing . . . ");
     console.log("inside 'update-consumed-value' event handler . . . ");
     console.log("current context (this):\n" + JSON.stringify(this));
 
