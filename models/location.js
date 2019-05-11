@@ -8,7 +8,8 @@ var location = {
     });
   },
   one: function(route_location_id, cb) {
-    orm.one("locations", route_location_id, function(res) {
+    // refactor - as special purpose route
+    orm.one_location("locations", route_location_id, function(res) {
       cb(res);
     });
   },

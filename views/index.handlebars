@@ -1,5 +1,17 @@
 <h1>Cat Diet Tracker</h1>
 
+<h2>Kennel Locations:</h2>
+<form class="goto-room">
+    <p>Room:
+        <select id="location_selection">
+            {{#each rooms}}
+            <option value="{{this.room_number}}">{{this.room_number}}</option>
+            {{/each}}
+        </select>
+        <button type="submit">Go To Room</button>
+    </p>
+</form>
+
 <h2>Current Residents:</h2>
 <ul>
   {{#each cats}}

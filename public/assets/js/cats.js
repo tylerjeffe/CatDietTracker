@@ -1,12 +1,10 @@
-
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-
   $(".add-cat").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    var newCat = {
+    const newCat = {
       name: $("#cat-name").val().trim(),
       weight: $("#cat-weight").val().trim(),
       alert: 0,
@@ -14,8 +12,6 @@ $(function() {
       room: $("#cat-location-room").val().trim(),
       kennel: $("#cat-location-kennel").val().trim()
     };
-
-    console.log(newCat);
 
     // Send the POST request.
     $.ajax("/api/cats", {
@@ -30,8 +26,45 @@ $(function() {
     );
   });
 
+  $(".feed-cat").on("submit", function(event) {
+    event.preventDefault();
+
+    console.log("inside .feed-cat() . . . ");
+
+    const newMeal = {
+      cat_id: $(this).data("id"),
+      food: $("#meal-content-item-selection option:selected").text()
+    };
+
+    // Send the POST request.
+    $.ajax("/api/meals/feed", {
+      type: "POST",
+      data: newMeal
+    }).then(
+      function() {
+        console.log("cat fed - meal created", newMeal.cat_id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $(".feed-collect").on("submit", function(event) {
+    event.preventDefault();
+
+    const id = $(this).data("id");
+
+    window.location.href="../../api/cats/"+id;
+  });
+
+  $(".goto-room").on("submit", function(event) {
+    event.preventDefault();
+
+    window.location.href = "api/locations/" + $("#location_selection option:selected").val();
+  });
+
   $(".delete-cat").on("click", function(event) {
-    var id = $(this).data("id");
+    const id = $(this).data("id");
 
     // Send the DELETE request.
     $.ajax("/api/cats/" + id, {
@@ -58,17 +91,14 @@ $(function() {
 
     for (let index = 0, length = consumed_vals.length; index < length; ++index) {
       if (consumed_vals[index].checked) {
-        //alert("radio button value = " + conVal[index].value);
         consumed_value = consumed_vals[index].value;
         break;
       }
     }
-    console.log("Current ID: " + id + "\tConsumed Value: " + consumed_value);
 
-    var new_consumed_value = {
+    const new_consumed_value = {
       value: consumed_value
     };
-    console.log("\nNewConsumedValue: " + new_consumed_value.value);
 
     // Send the PUT request.
     $.ajax("/api/meal_contents/" + id, {
@@ -80,6 +110,9 @@ $(function() {
       }
     );
   });
+
+
+});
 
   $(".meal-service").on("submit", function(event) {
     event.preventDefault();
@@ -133,5 +166,6 @@ window.onclick = function(event) {
     //   });
     // })
 });
+
 
 

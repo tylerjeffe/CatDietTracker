@@ -14,7 +14,13 @@ var meal = {
   },
   // The variables cols and vals are arrays.
   create: function(cols, vals, cb) {
+    console.log("TESTING - OK HERE A");
+
+    console.log("col length: " + cols.length);
+    console.log("vals length: " + vals.length);
+
     orm.create("meals", cols, vals, function(res) {
+      console.log("TESTING - OK HERE B");
       cb(res);
     });
   },
