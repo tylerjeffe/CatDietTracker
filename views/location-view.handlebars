@@ -12,11 +12,11 @@
                 <button type="submit">Go to Room</button>
         </div>
         <div class="col">
-            <button id="close" class="add-cat"><img src="../circle-add-512.png"></button>
+            <button id="myBtn" class="add-cat"><img src="../circle-add-512.png"></button>
             <p>Add Cat</p>
         </div>
         <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-            aria-hidden="true">
+            aria-hidden="true" id="myModal">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <h2>Check-in (add) a Cat</h2>
@@ -49,6 +49,7 @@
                         </div>
 
                         <button type="submit">Add Cat</button>
+                        <span class="close">&times;</span>
                     </form>
                 </div>
             </div>
