@@ -18,10 +18,26 @@ location_routes.get("/api/locations", function(req, res) {
 });
 
 // read: 'location' data (one)
-location_routes.get("/api/locations/:id", function(req, res) {
-  var route_cat_id = req.params.id;
+location_routes.get("/api/locations/:room", function(req, res) {
+  var route_location_room = req.params.room;
 
-  location.one(route_cat_id, function(data) {
+  console.log("inside location_routes() . . .");
+
+  location.one(route_location_room, function(data) {
+    var data_object = {
+      locations: data,
+    }
+    console.log("single location: data_object " + JSON.stringify(data_object));
+    res.render("location-view", data_object);
+  });
+});
+
+/*
+// read: 'location' data (one)
+location_routes.get("/api/locations/:room", function(req, res) {
+  var route_location_room = req.params.room;
+
+  location.one(route_location_room, function(data) {
     var data_object = {
       locations: data[0],
     }
@@ -29,7 +45,7 @@ location_routes.get("/api/locations/:id", function(req, res) {
     res.render("location-view", data_object);
   });
 });
-
+*/
 // create: new 'location' via future form -> submit button -> post (create)
 location_routes.post("/api/locations", function(req, res) {
   location.create([

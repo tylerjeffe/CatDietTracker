@@ -30,6 +30,39 @@ $(function() {
     );
   });
 
+  $(".feed-cat").on("submit", function(event) {
+    event.preventDefault();
+
+    console.log("inside .feed-cat() . . . ");
+
+    var id = $(this).data("id");
+
+    console.log("id: " + id);
+
+    //var x = document.getElementById("meal_content").selectedIndex;
+    //console.log("x: " + x);
+    //var y = document.getElementById("meal_content").options;
+
+    console.log("NEW TEST: " + document.getElementById("feed-cat").elements["meal_content"]);
+
+    var newMeal = {
+      food: "abc"
+    };
+
+    console.log(JSON.stringify(newMeal));
+
+    // Send the DELETE request.
+    $.ajax("/api/meals/feed", {
+      type: "POST"
+    }).then(
+      function() {
+        console.log("cat fed - meal created", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
   $(".delete-cat").on("click", function(event) {
     var id = $(this).data("id");
 
@@ -49,7 +82,6 @@ $(function() {
   $(".update-consumed-value").on("submit", function(event) {
     event.preventDefault();
 
-    console.log("testing . . . ");
     console.log("inside 'update-consumed-value' event handler . . . ");
     console.log("current context (this):\n" + JSON.stringify(this));
 
@@ -81,7 +113,7 @@ $(function() {
       }
     );
   });
-
+/*
   $(".meal-service").on("submit", function(event) {
     event.preventDefault();
 
@@ -90,5 +122,6 @@ $(function() {
     const id = $(this).data("id");
 
   });
+*/
 
 });

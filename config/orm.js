@@ -122,6 +122,18 @@ var orm = {
       cb(result);
     })
   },
+  one_location: function(tableInput, route_location_room, cb) {
+
+    // original
+    var queryString = "SELECT * FROM " + tableInput + " WHERE room_number =" + route_location_room + ";";
+
+    //connection.query(mealsQueryStringRoot,[date1, date2], function(err, result) {
+    connection.query(queryString, function(err, result) {
+      if (err) throw err;
+
+      cb(result);
+    })
+  },
   /*
   one_date: function(tableInput, route_cat_id, route_date, cb) {
 

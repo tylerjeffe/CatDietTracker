@@ -6,6 +6,8 @@ var meal = require("../models/meal.js");
 var meal_content = require("../models/meal_content");
 var meal_content_item = require("../models/meal_content_item.js");
 
+var moment = require("moment");
+
 // create routes - set up logic within those routes where required
 
 // read: 'meal' data (all)
@@ -32,13 +34,44 @@ meal_routes.get("/api/meals/:id", function(req, res) {
   });
 });
 
+/*
+CREATE TABLE meals
+(
+  meal_id INT NOT NULL AUTO_INCREMENT,
+  meal_date_time DATETIME NOT NULL,
+
+  meal_cat_id_fk INT NOT NULL,    
+  meal_server_id_fk INT NOT NULL, 
+  meal_location_id_fk INT NOT NULL, 
+  PRIMARY KEY (meal_id) 
+);
+
+CREATE TABLE meal_contents
+(
+  meal_content_id INT NOT NULL AUTO_INCREMENT,
+  meal_content_description VARCHAR(128) NOT NULL,
+  meal_content_consumed INT NOT NULL,
+  
+  meal_id_fk INT NOT NULL,
+  PRIMARY KEY (meal_content_id)
+);
+*/
+
 
 // create: new 'meal' (via form -> submit button -> post)
-meal_routes.post("/api/meals", function(req, res) {
+meal_routes.post("/api/meals/feed", function(req, res) {
+
+  console.log("inside meal_routes:post() . . .");
+
+  const right_now = moment();
+  const cat_id = req.body.cat_id;
+
   meal.create([
     // meal table rows
+    meal_date_time, meal_cat_id_fk, meal_server_id_fk, meal_location_id_fk
   ], [
     // new meal values:
+    right_now, cat_id, -1, -1
     //req.body.name, req.body.weight, 0, req.body.notes, -1, req.body.room, req.body.kennel
   ], function(result) {
     // Send back the ID of the new cat
