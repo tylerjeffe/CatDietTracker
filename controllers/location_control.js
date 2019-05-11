@@ -25,10 +25,10 @@ location_routes.get("/api/locations/:room", function(req, res) {
 
   location.one(route_location_room, function(data) {
     var data_object = {
-      locations: data,
+      locations: data
     }
     console.log("single location: data_object " + JSON.stringify(data_object));
-    res.render("location-view", data_object);
+    res.render("location-view-jp", data_object);
   });
 });
 

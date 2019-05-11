@@ -1,7 +1,5 @@
-
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-
   $(".add-cat").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
@@ -55,6 +53,14 @@ $(function() {
     );
   });
 
+  $(".feed-collect").on("submit", function(event) {
+    event.preventDefault();
+
+    var id = $(this).data("id");
+
+    window.location.href="../../api/cats/"+id;
+  });
+
   $(".delete-cat").on("click", function(event) {
     var id = $(this).data("id");
 
@@ -83,7 +89,6 @@ $(function() {
 
     for (let index = 0, length = consumed_vals.length; index < length; ++index) {
       if (consumed_vals[index].checked) {
-        //alert("radio button value = " + conVal[index].value);
         consumed_value = consumed_vals[index].value;
         break;
       }
@@ -105,15 +110,5 @@ $(function() {
       }
     );
   });
-/*
-  $(".meal-service").on("submit", function(event) {
-    event.preventDefault();
-
-    console.log("inside .meal-service event handler . . .");
-
-    const id = $(this).data("id");
-
-  });
-*/
 
 });

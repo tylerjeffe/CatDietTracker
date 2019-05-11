@@ -23,12 +23,13 @@ td {
     border: 1px solid #333;
     
 }
-  table {
+/*
+table {
     table-layout: fixed;
     width: 100px;
     height: 75px;
 }
-
+*/
 thead,
 tfoot {
     background-color: #333;

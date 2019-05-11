@@ -24,7 +24,26 @@ VALUES
 	("Griffin", 10.3, false, "Awesome Cat", 105, 1, 5),
 	("James", 10.3, false, "Awesome Cat", 106, 1, 6),
 	("Hobie", 10.3, false, "Awesome Cat", 107, 1, 7),
-	("Theo", 10.3, false, "Awesome Cat", 108, 1, 8);
+	("Theo", 10.3, false, "Awesome Cat", 108, 1, 8),
+
+	("Momo", 9.2, false, "Awesome Cat", 201, 2, 1),
+	("Kuro", 9.2, false, "Awesome Cat", 202, 2, 2),
+	("Hana", 9.2, false, "Awesome Cat", 203, 2,3),
+	("Koko", 9.2, false, "Awesome Cat", 204, 2, 4),
+	("Shiro", 10.3, false, "Awesome Cat", 205, 2, 5),
+	("Sora", 10.3, false, "Awesome Cat", 206, 2, 6),
+	("Fuku", 10.3, false, "Awesome Cat", 207, 2, 7),
+	("Mel", 10.3, false, "Awesome Cat", 208, 2, 8),
+
+	("Oscar", 9.2, false, "Awesome Cat", 301, 3, 1),
+	("Max", 9.2, false, "Awesome Cat", 302, 3, 2),
+	("Tiger", 9.2, false, "Awesome Cat", 303, 3,3),
+	("Sam", 9.2, false, "Awesome Cat", 304, 3, 4),
+	("Misty", 10.3, false, "Awesome Cat", 305, 3, 5),
+	("Simba", 10.3, false, "Awesome Cat", 306, 3, 6),
+	("Coco", 10.3, false, "Awesome Cat", 307, 3, 7),
+	("Chloe", 10.3, false, "Awesome Cat", 308, 3, 8);
+
 
 /*	
 CREATE TABLE locations
@@ -48,7 +67,26 @@ VALUES
 	(105, 1, 5, 5),
 	(106, 1, 6, 6),
 	(107, 1, 7, 7),
-	(108, 1, 8, 8);
+	(108, 1, 8, 8),
+
+	(201, 2, 1, 9),
+	(202, 2, 2, 10),
+	(203, 2, 3, 11),
+	(204, 2, 4, 12),
+	(205, 2, 5, 13),
+	(206, 2, 6, 14),
+	(207, 2, 7, 15),
+	(208, 2, 8, 16),
+
+	(301, 3, 1, 17),
+	(302, 3, 2, 18),
+	(303, 3, 3, 19),
+	(304, 3, 4, 20),
+	(305, 3, 5, 21),
+	(306, 3, 6, 22),
+	(307, 3, 7, 23),
+	(308, 3, 8, 24);
+
 
 -- notes
 	-- residency date/time data based on served - consumed 'meals' 
@@ -94,9 +132,6 @@ VALUES
 	(15, "2019-05-11T06:00:00", 1, 1001, 101),
 	(16, "2019-05-11T18:00:00", 1, 1001, 101),
 
-	(17, "2019-05-12T06:00:00", 1, 1001, 101),
-	(18, "2019-05-12T18:00:00", 1, 1001, 101);
-
 
 /*
 CREATE TABLE meal_contents
@@ -113,51 +148,47 @@ CREATE TABLE meal_contents
 INSERT INTO meal_contents
 	(meal_content_id, meal_content_description, meal_content_consumed, meal_id_fk)
 VALUES 
-	(1, "A1 - Premium", 4, 1),
-	(2, "A2 - Generic", 2, 1),
-	(3, "A3 - Premium", 3, 2),
-	(4, "A4 - Generic", 3, 2),
+	(1, "Wiskas", 4, 1),
+	(2, "Purina", 2, 1),
+	(3, "Science Diet", 3, 2),
+	(4, "Friskies", 3, 2),
 
-	(5, "A5 - Premium", 3, 3),
-	(6, "A6 - Premium", 3, 3),
-	(7, "A7 - Premium", 3, 4),
-	(8, "A8 - Premium", 3, 4),
+	(5, "Friskies", 3, 3),
+	(6, "Science Diet", 3, 3),
+	(7, "Wiskas", 3, 4),
+	(8, "Purina", 3, 4),
 
-	(9, "A9 - Premium", 3, 5),
-	(10, "A10 - Premium", 3, 5),
-	(11, "A11 - Premium", 3, 6),
-	(12, "A12 - Premium", 3, 6),
+	(9, "Wiskas", 3, 5),
+	(10, "Purina", 3, 5),
+	(11, "Friskies", 3, 6),
+	(12, "Science Diet", 3, 6),
 
-	(13, "A13 - Premium", 3, 7),
-	(14, "A14 - Premium", 3, 7),
-	(15, "A15 - Premium", 3, 8),
-	(16, "A16 - Premium", 3, 8),
+	(13, "Friskies", 3, 7),
+	(14, "Wiskas", 3, 7),
+	(15, "Science Diet", 3, 8),
+	(16, "Purina", 3, 8),
 
-	(17, "A17 - Premium", 3, 9),
-	(18, "A18 - Premium", 3, 9),
-	(19, "A19 - Premium", 3, 10),
-	(20, "A20 - Premium", 3, 10),
+	(17, "Purina", 3, 9),
+	(18, "Friskies", 3, 9),
+	(19, "Wiskas", 3, 10),
+	(20, "Science Diet", 3, 10),
 
-	(21, "A21 - Premium", 3, 11),
-	(22, "A22 - Premium", 3, 11),
-	(23, "A23 - Premium", 3, 12),
-	(24, "A24 - Premium", 3, 12),
+	(21, "Science Diet", 3, 11),
+	(22, "Purina", 3, 11),
+	(23, "Wiskas", 3, 12),
+	(24, "Friskies", 3, 12),
 
-	(25, "A25 - Premium", 3, 13),
-	(26, "A26 - Premium", 3, 13),
-	(27, "A27 - Premium", 3, 14),
-	(28, "A28 - Premium", 3, 14),
+	(25, "Science Diet", 3, 13),
+	(26, "Wiskas", 3, 13),
+	(27, "Friskies", 3, 14),
+	(28, "Purina", 3, 14),
 
 
-	(29, "A29 - Premium", 3, 15),
-	(30, "A30 - Premium", 3, 15),
-	(31, "A31 - Premium", 3, 16),
-	(32, "A32 - Premium", 3, 16),
+	(29, "Purina", 3, 15),
+	(30, "Friskies", 3, 15),
+	(31, "Wiskas", 3, 16),
+	(32, "Science Diet", 3, 16);
 
-	(33, "A33 - Premium", 3, 17),
-	(34, "A34 - Premium", 3, 17),
-	(35, "A35 - Premium", 3, 18),
-	(36, "A36 - Premium", 3, 18);
 
 /*
 CREATE TABLE meal_content_items (
@@ -175,4 +206,3 @@ VALUES
 	(2, "Purina"),
 	(3, "Science Diet"),
 	(4, "Wiskas");
-	

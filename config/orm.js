@@ -125,7 +125,10 @@ var orm = {
   one_location: function(tableInput, route_location_room, cb) {
 
     // original
-    var queryString = "SELECT * FROM " + tableInput + " WHERE room_number =" + route_location_room + ";";
+    var queryString = "SELECT loc.location_id, loc.room_number, loc.kennel_number, loc.location_cat_id_fk, c1.cat_id, c1.cat_name " +
+                      "FROM locations loc, cats c1 " + 
+                      "WHERE loc.location_cat_id_fk = c1.cat_id " +
+                        "AND loc.room_number = " + route_location_room + ";";
 
     //connection.query(mealsQueryStringRoot,[date1, date2], function(err, result) {
     connection.query(queryString, function(err, result) {

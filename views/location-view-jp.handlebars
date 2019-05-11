@@ -1,0 +1,25 @@
+<h2>Room - Kennel Locations</h2>
+<table>
+    <thead>
+        <th>Location ID -</th>
+        <th>Room Number -</th>
+        <th>Kennel Number -</th>
+        <th>Cats Name -</th>
+        <th>Feed - Record Data</th>        
+    </thead>
+    <tbody>
+    {{#each locations}}
+    <tr>
+        <td>{{this.location_id}}</td>
+        <td>{{this.room_number}}</td>
+        <td>{{this.kennel_number}}</td>
+        <td>{{this.cat_name}}</td>
+        <td>
+            <form class="feed-collect" data-id="{{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}">
+                <button type="submit" id="feed-collect-{{this.cat_id}}">Feed - Record Data</button>
+            </form>
+        </td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>

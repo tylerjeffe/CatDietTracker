@@ -3,12 +3,11 @@
 <div class="container card">
     <div class="row">
         <div class="col-md-6">
-            {{#each cats}}
+
             <h2 class="cat-name">{{this.cat_name}}</h2>
-            <form class="feed-cat data-id=" {{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}>
-            <div class=" col meal_service" data-id="{{this.cat_id}}" id="{{this.cat_id}}"
-                name="meal-item-{{this.cat_id}}">
-                {{/each}}
+            {{#each cats}}
+            <form class="feed-cat" data-id=" {{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}">
+            {{/each}}
                 <p>Current Meal Selection:
                     <select id="meal-content-item-selection">
                         {{#each meal_items}}
