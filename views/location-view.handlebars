@@ -4,22 +4,108 @@
             {{!-- empty space --}}
         </div>
         <div class="col">
-            <p>Select Room:</p>
+            <p>Select room:</p>
             <select id="location-selection">
                 <option value="1">Room 1</option>
                 <option value="2">Room 2</option>
                 <option value="3">Room 3</option>
-                
+                <button type="submit">Go to Room</button>
         </div>
         <div class="col">
             <button id="close" class="add-cat"><img src="../circle-add-512.png"></button>
             <p>Add Cat</p>
         </div>
-    </div>
-    <div class="row">
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <h2>Check-in (add) a Cat</h2>
+                    <form class="add-cat">
+
+                        <div class="form-group">
+                            <label for="cat-name">Cat Name:</label>
+                            <input type="text" id="cat-name" name="cat-name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cat-weight">Cat Starting Weight:</label>
+                            <input type="text" id="cat-weight" name="cat-weight">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cat-notes">Cat Notes:</label><br>
+                            <textarea name="cat-notes" id="cat-notes" rows="8" cols="30"
+                                placeholder="notes:"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cat-location-room">Cat Location - Room #:</label>
+                            <input type="text" id="cat-location-room" name="cat-location-room">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cat-location-kennel">Cat Location - Kennel #:</label>
+                            <input type="text" id="cat-location-kennel" name="cat-location-kennel">
+                        </div>
+
+                        <button type="submit">Add Cat</button>
+                    </form>
+                </div>
+            </div>
+            {{!-- <div class="row">
         {{#each locations}}
         <div class="col">
             {{this.location_cat_id_fk}}
         </div>
-    </div>
-</div>
+    </div> --}}
+            <div class="row">
+                <div class="col">kennel 1</div>
+                <div class="col">kennel 2</div>
+                <div class="col">kennel 3</div>
+                <div class="col">kennel 4</div>
+                <div class="col">kennel 5</div>
+                <div class="col">kennel 6</div>
+                <div class="col">kennel 7</div>
+                <div class="col">kennel 8</div>
+            </div>
+            <div class="row">
+                <div class="col">kennel 9</div>
+                <div class="col">kennel 10</div>
+                <div class="col">kennel 11</div>
+                <div class="col">kennel 12</div>
+                <div class="col">kennel 13</div>
+                <div class="col">kennel 14</div>
+                <div class="col">kennel 15</div>
+                <div class="col">kennel 16</div>
+            </div>
+            <div class="row">
+                <div class="col">kennel 17</div>
+                <div class="col">kennel 18</div>
+                <div class="col">kennel 19</div>
+                <div class="col">kennel 20</div>
+                <div class="col">kennel 21</div>
+                <div class="col">kennel 22</div>
+                <div class="col">kennel 23</div>
+                <div class="col">kennel 24</div>
+            </div>
+            <div class="row">
+                <div class="col">kennel 25</div>
+                <div class="col">kennel 26</div>
+                <div class="col">kennel 27</div>
+                <div class="col">kennel 28</div>
+                <div class="col">kennel 29</div>
+                <div class="col">kennel 30</div>
+                <div class="col">kennel 31</div>
+                <div class="col">kennel 32</div>
+            </div>
+            <div class="row">
+                <div class="col">kennel 33</div>
+                <div class="col">kennel 34</div>
+                <div class="col">kennel 35</div>
+                <div class="col">kennel 36</div>
+                <div class="col">kennel 37</div>
+                <div class="col">kennel 38</div>
+                <div class="col">kennel 39</div>
+                <div class="col">kennel 40</div>
+            </div>
+        </div>
