@@ -4,7 +4,7 @@ $(function() {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    var newCat = {
+    const newCat = {
       name: $("#cat-name").val().trim(),
       weight: $("#cat-weight").val().trim(),
       alert: 0,
@@ -12,8 +12,6 @@ $(function() {
       room: $("#cat-location-room").val().trim(),
       kennel: $("#cat-location-kennel").val().trim()
     };
-
-    console.log(newCat);
 
     // Send the POST request.
     $.ajax("/api/cats", {
@@ -33,12 +31,10 @@ $(function() {
 
     console.log("inside .feed-cat() . . . ");
 
-    var newMeal = {
+    const newMeal = {
       cat_id: $(this).data("id"),
       food: $("#meal-content-item-selection option:selected").text()
     };
-
-    console.log(JSON.stringify(newMeal));
 
     // Send the POST request.
     $.ajax("/api/meals/feed", {
@@ -56,13 +52,13 @@ $(function() {
   $(".feed-collect").on("submit", function(event) {
     event.preventDefault();
 
-    var id = $(this).data("id");
+    const id = $(this).data("id");
 
     window.location.href="../../api/cats/"+id;
   });
 
   $(".delete-cat").on("click", function(event) {
-    var id = $(this).data("id");
+    const id = $(this).data("id");
 
     // Send the DELETE request.
     $.ajax("/api/cats/" + id, {
@@ -93,12 +89,10 @@ $(function() {
         break;
       }
     }
-    console.log("Current ID: " + id + "\tConsumed Value: " + consumed_value);
 
-    var new_consumed_value = {
+    const new_consumed_value = {
       value: consumed_value
     };
-    console.log("\nNewConsumedValue: " + new_consumed_value.value);
 
     // Send the PUT request.
     $.ajax("/api/meal_contents/" + id, {

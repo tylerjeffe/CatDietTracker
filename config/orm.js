@@ -1,18 +1,13 @@
 // Import MySQL connection.
-var connection = require("../config/connection.js");
+const connection = require("../config/connection.js");
 
-// Helper function for SQL syntax.
-// Let's say we want to pass 3 values into the mySQL query.
-// In order to write the query, we need 3 question marks.
 // The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
 // ["?", "?", "?"].toString() => "?,?,?";
 function printQuestionMarks(num) {
   var arr = [];
-
   for (var i = 0; i < num; i++) {
     arr.push("?");
   }
-
   return arr.toString();
 }
 
@@ -55,11 +50,6 @@ var orm = {
     // original
     var queryStringCat = "SELECT * FROM " + tableInput + " WHERE cat_id =" + route_cat_id + ";";
   
-    //temp queryString
-    // refactor - need to add / return 'weekly meal data' for 'target week'
-
-    var date1 = "2019-04-28",
-        date2 = "2019-05-01";
 
     // Daily Meal Log - Query String Root
     const queryStringMealsRoot = 
@@ -72,65 +62,45 @@ var orm = {
       "ORDER BY m1.meal_id;";
 */
 
-    var queryStringSun = queryStringMealsRoot +
+    const queryStringSun = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-05' AND m1.meal_date_time <= '2019-05-06' " + 
-                       "ORDER BY m1.meal_id;";
-    var queryStringMon = queryStringMealsRoot +
+                       "ORDER BY m1.meal_id;",
+          queryStringMon = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-06' AND m1.meal_date_time <= '2019-05-07' " + 
-                       "ORDER BY m1.meal_id;";
-    var queryStringTue = queryStringMealsRoot +
+                       "ORDER BY m1.meal_id;",
+          queryStringTue = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-07' AND m1.meal_date_time <= '2019-05-08' " + 
-                       "ORDER BY m1.meal_id;";
-    var queryStringWed = queryStringMealsRoot +
+                       "ORDER BY m1.meal_id;",
+          queryStringWed = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-08' AND m1.meal_date_time <= '2019-05-09' " + 
-                       "ORDER BY m1.meal_id;";
-    var queryStringThu = queryStringMealsRoot +
+                       "ORDER BY m1.meal_id;",
+          queryStringThu = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-09' AND m1.meal_date_time <= '2019-05-10' " + 
-                       "ORDER BY m1.meal_id;";
-    var queryStringFri = queryStringMealsRoot +
+                       "ORDER BY m1.meal_id;",
+          queryStringFri = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-10' AND m1.meal_date_time <= '2019-05-11' " + 
-                       "ORDER BY m1.meal_id;";
-    var queryStringSat = queryStringMealsRoot +
+                       "ORDER BY m1.meal_id;",
+          queryStringSat = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-11' AND m1.meal_date_time <= '2019-05-12' " + 
                        "ORDER BY m1.meal_id;";
 
     var queryStringMealItems = "SELECT * FROM meal_content_items;";
 
-/*
-                       var queryString3 = 
-      "SELECT m1.meal_id, m1.meal_date_time, m1.meal_cat_id_fk, m1.meal_server_id_fk, m1.meal_location_id_fk,"
-             +"mc1.meal_content_id, mc1.meal_content_description, mc1.meal_content_consumed, mc1.meal_id_fk " +
-      "FROM  meals m1, meal_contents mc1 " + 
-      "WHERE mc1.meal_id_fk = m1.meal_id " + "AND m1.meal_cat_id_fk=" + route_cat_id + " " + 
-        "AND m1.meal_date_time >= '2019-05-01' AND m1.meal_date_time <= '2019-05-02' " + 
-      "ORDER BY m1.meal_id;";
-*/
-
     const queryString = queryStringCat + queryStringSun + queryStringMon + queryStringTue + queryStringWed + 
                         queryStringThu + queryStringFri + queryStringSat + queryStringMealItems;
 
-    //console.log("\n\nqueryString1 = " + queryString1);
-    //console.log("\n\nqueryString2 = " + queryString2);
-    //console.log("\n\nqueryString3 = " + queryString3);
-
-    // use moment.js to advance through the days of the week ???
-
-    //connection.query(mealsQueryStringRoot,[date1, date2], function(err, result) {
-    connection.query(queryString, function(err, result) {
+     connection.query(queryString, function(err, result) {
       if (err) throw err;
 
       cb(result);
     })
   },
   one_location: function(tableInput, route_location_room, cb) {
-
-    // original
     var queryString = "SELECT loc.location_id, loc.room_number, loc.kennel_number, loc.location_cat_id_fk, c1.cat_id, c1.cat_name " +
                       "FROM locations loc, cats c1 " + 
                       "WHERE loc.location_cat_id_fk = c1.cat_id " +
                         "AND loc.room_number = " + route_location_room + ";";
 
-    //connection.query(mealsQueryStringRoot,[date1, date2], function(err, result) {
     connection.query(queryString, function(err, result) {
       if (err) throw err;
 
@@ -178,7 +148,6 @@ var orm = {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },
@@ -196,7 +165,6 @@ var orm = {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },
@@ -209,7 +177,6 @@ var orm = {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   }
