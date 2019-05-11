@@ -8,6 +8,9 @@ var meal_content_item = require("../models/meal_content_item.js");
 
 var moment = require("moment");
 
+
+var globalMealCounter = 600;
+
 // create routes - set up logic within those routes where required
 
 // read: 'meal' data (all)
@@ -61,22 +64,37 @@ CREATE TABLE meal_contents
 // create: new 'meal' (via form -> submit button -> post)
 meal_routes.post("/api/meals/feed", function(req, res) {
 
+  ++globalMealCounter;
+
   console.log("inside meal_routes:post() . . .");
 
-  const right_now = moment();
-  const cat_id = req.body.cat_id;
+  const meal_date_time = moment().format("YYYY-MM-DD HH:mm:ss");
+  console.log(meal_date_time);
+  //const cat_id = $(this).data("id");
 
+  console.log("cat_id --> " + req.body.id);
+  console.log("food -->: " + req.body.food);
+
+  // still need to handle
+  const cat_id = req.body.cat_id;
+  const meal_item = req.body.food;
+  
+  // refactor - decouple
   meal.create([
-    // meal table rows
-    meal_date_time, meal_cat_id_fk, meal_server_id_fk, meal_location_id_fk
+    "meal_date_time", "meal_cat_id_fk", "meal_server_id_fk", "meal_location_id_fk"
   ], [
-    // new meal values:
-    right_now, cat_id, -1, -1
-    //req.body.name, req.body.weight, 0, req.body.notes, -1, req.body.room, req.body.kennel
+    meal_date_time, req.body.cat_id, -1, -1
   ], function(result) {
-    // Send back the ID of the new cat
-    res.json({ id: result.insertId });
+    //res.json({ id: result.insertId });
+    meal_content.create([
+      "meal_content_description", "meal_content_consumed", "meal_id_fk"
+    ],[
+      req.body.food, -1, result.insertId 
+    ], function(result) {
+      res.json({ id: result.insertId });
+    });
   });
+
 });
 
 // update: 'meal' with new data

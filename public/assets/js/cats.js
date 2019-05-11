@@ -35,28 +35,20 @@ $(function() {
 
     console.log("inside .feed-cat() . . . ");
 
-    var id = $(this).data("id");
-
-    console.log("id: " + id);
-
-    //var x = document.getElementById("meal_content").selectedIndex;
-    //console.log("x: " + x);
-    //var y = document.getElementById("meal_content").options;
-
-    //console.log("NEW TEST: " + document.getElementById("feed-cat").elements["meal_content"]);
-
     var newMeal = {
-      food: "abc"
+      cat_id: $(this).data("id"),
+      food: $("#meal-content-item-selection option:selected").text()
     };
 
     console.log(JSON.stringify(newMeal));
 
-    // Send the DELETE request.
+    // Send the POST request.
     $.ajax("/api/meals/feed", {
-      type: "POST"
+      type: "POST",
+      data: newMeal
     }).then(
       function() {
-        console.log("cat fed - meal created", id);
+        console.log("cat fed - meal created", newMeal.cat_id);
         // Reload the page to get the updated list
         location.reload();
       }
