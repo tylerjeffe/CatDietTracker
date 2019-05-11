@@ -105,3 +105,11 @@ span.psw {
     width: 100%;
   }
 }
+
+.row:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.col:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
