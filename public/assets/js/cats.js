@@ -43,7 +43,7 @@ $(function() {
     //console.log("x: " + x);
     //var y = document.getElementById("meal_content").options;
 
-    console.log("NEW TEST: " + document.getElementById("feed-cat").elements["meal_content"]);
+    //console.log("NEW TEST: " + document.getElementById("feed-cat").elements["meal_content"]);
 
     var newMeal = {
       food: "abc"
