@@ -1,0 +1,107 @@
+<h1>Cat Diet Tracker</h1>
+
+<div class="container card">
+    <div class="row">
+        <div class="col-md-6">
+            {{#each cats}}
+            <h2 class="cat-name">{{this.cat_name}}</h2>
+            <form class="feed-cat data-id=" {{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}>
+            <div class=" col meal_service" data-id="{{this.cat_id}}" id="{{this.cat_id}}"
+                name="meal-item-{{this.cat_id}}">
+                {{/each}}
+                <p>Current Meal Selection:
+                    <select id="meal-content-item-selection">
+                        {{#each meal_items}}
+                        <option value="{{this.meal_content_item_id}}">{{this.meal_content_item_description}}</option>
+                        {{/each}}
+                    </select>
+                    {{#each cats}}
+                    <button type="submit">Feed {{this.cat_name}}</button>
+                    {{/each}}
+                </p>
+            </form>
+
+        </div>
+        <div class="col-md-6">
+            {{#each cats}}
+            <h2 id="cat-location">Location: Room #: {{this.cat_location_room}} - Kennel #: {{this.cat_location_kennel}}
+            </h2>
+        </div>
+        {{/each}}
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Sun</h2>
+        </div>
+        <div class="col">
+            <h2>Mon</h2>
+        </div>
+        <div class="col">
+            <h2>Tue</h2>
+        </div>
+        <div class="col">
+            <h2>Wed</h2>
+        </div>
+        <div class="col">
+            <h2>Thur</h2>
+        </div>
+        <div class="col">
+            <h2>Fri</h2>
+        </div>
+        <div class="col">
+            <h2>Sat</h2>
+        </div>
+    </div>
+	
+    <div class="row">
+        <div class="col">
+            <span> {{#each meals_Sun}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Mon}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Tue}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Wed}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Thu}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Fri}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+        <div class="col">
+            <span> {{#each meals_Sat}}
+                {{this.meal_content_description}} <br>
+                {{this.meal_content_consumed}}
+                {{> meal_contents/meal_contents_block}}
+                {{/each}}</span>
+        </div>
+    </div>
+</div>
