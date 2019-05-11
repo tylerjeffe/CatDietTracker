@@ -57,6 +57,12 @@ $(function() {
     window.location.href="../../api/cats/"+id;
   });
 
+  $(".goto-room").on("submit", function(event) {
+    event.preventDefault();
+
+    window.location.href = "api/locations/" + $("#location_selection option:selected").val();
+  });
+
   $(".delete-cat").on("click", function(event) {
     const id = $(this).data("id");
 

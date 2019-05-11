@@ -12,7 +12,8 @@ var moment = require("moment");
 cat_routes.get("/", function(req, res) {
   cat.all(function(data) {
     var data_object = {
-      cats: data
+      cats: data[0],
+      rooms: data[1]
     };
     console.log(data_object);
     res.render("index", data_object);
@@ -23,9 +24,10 @@ cat_routes.get("/", function(req, res) {
 cat_routes.get("/api/cats", function(req, res) {
   cat.all(function(data) {
     var data_object = {
-      cats: data
+      cats: data[0],
+      rooms: data[1]
     };
-    console.log(data_object);
+    //console.log(data_object);
     res.render("index", data_object);
   });
 });
