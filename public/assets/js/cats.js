@@ -111,4 +111,61 @@ $(function() {
     );
   });
 
+
 });
+
+  $(".meal-service").on("submit", function(event) {
+    event.preventDefault();
+
+    console.log("inside .meal-service event handler . . .");
+
+    const id = $(this).data("id");
+
+  });
+
+  // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    // Get route for room selection on location view
+    // $("#location-selection").on("submit", function(event) {
+    //   // Make sure to preventDefault on a submit event.
+    //   event.preventDefault();
+
+    //   location_routes.get("/api/locations/:id", function(req, res) {
+    //     var route_cat_id = req.params.id;
+      
+    //     location.one(route_cat_id, function(data) {
+    //       var data_object = {
+    //         locations: data[0],
+    //       }
+    //       console.log("single location: data_object " + data_object);
+    //       res.render("location-view", data_object);
+    //     });
+    //   });
+    // })
+});
+
+
+
