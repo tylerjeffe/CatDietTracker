@@ -1,18 +1,31 @@
 // Set up MySQL connection.
-var mysql = require("mysql");
+const mysql = require("mysql");
 
-var connection = mysql.createConnection({
-  host: "ocvwlym0zv3tcn68.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  port: 3306,
+let connection = null;
 
-  user: "x94prr91fvar4lwd",
-  password: "r8zd4co4lrc5liub",
-  database: "j6jxgv1mso2dra1q",
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+  console.log("connecting via environment variable credential data - more secure");
+}
+else {
+  connection = mysql.createConnection("mysql://gt5tv0dxt5vfjs01:ov0ca0z0z2gski18@rtzsaka6vivj2zp1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/wocqowge8kfukc9z?multipleStatements=true");
+  console.log("connecting via hard-coded connection string - unsecure");
+}
 
-  multipleStatements: true
+/*
+const connection = mysql.createConnection({
+    host: "rtzsaka6vivj2zp1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    port: 3306,
+
+    user: "gt5tv0dxt5vfjs01",
+    password: "ov0ca0z0z2gski18",
+    database: "wocqowge8kfukc9z",
+
+    multipleStatements: true
 });
+*/
 
-// Make connection.
+// Make connection
 connection.connect(function(err) {
   if (err) {
     console.error("error connecting: " + err.stack);
