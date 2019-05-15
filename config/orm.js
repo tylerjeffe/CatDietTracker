@@ -67,25 +67,25 @@ var orm = {
 */
 
     const queryStringSun = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-05' AND m1.meal_date_time <= '2019-05-06' " + 
+                       "AND m1.meal_date_time >= '2019-05-11' AND m1.meal_date_time <= '2019-05-12' " + 
                        "ORDER BY m1.meal_id;",
           queryStringMon = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-06' AND m1.meal_date_time <= '2019-05-07' " + 
+                       "AND m1.meal_date_time >= '2019-05-12' AND m1.meal_date_time <= '2019-05-13' " + 
                        "ORDER BY m1.meal_id;",
           queryStringTue = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-07' AND m1.meal_date_time <= '2019-05-08' " + 
+                       "AND m1.meal_date_time >= '2019-05-13' AND m1.meal_date_time <= '2019-05-14' " + 
                        "ORDER BY m1.meal_id;",
           queryStringWed = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-08' AND m1.meal_date_time <= '2019-05-09' " + 
+                       "AND m1.meal_date_time >= '2019-05-14' AND m1.meal_date_time <= '2019-05-15' " + 
                        "ORDER BY m1.meal_id;",
           queryStringThu = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-09' AND m1.meal_date_time <= '2019-05-10' " + 
+                       "AND m1.meal_date_time >= '2019-05-15' AND m1.meal_date_time <= '2019-05-16' " + 
                        "ORDER BY m1.meal_id;",
           queryStringFri = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-10' AND m1.meal_date_time <= '2019-05-11' " + 
+                       "AND m1.meal_date_time >= '2019-05-16' AND m1.meal_date_time <= '2019-05-17' " + 
                        "ORDER BY m1.meal_id;",
           queryStringSat = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-11' AND m1.meal_date_time <= '2019-05-12' " + 
+                       "AND m1.meal_date_time >= '2019-05-17' AND m1.meal_date_time <= '2019-05-18' " + 
                        "ORDER BY m1.meal_id;";
 
     var queryStringMealItems = "SELECT * FROM meal_content_items;";
