@@ -113,7 +113,7 @@ $(function() {
 
 
 });
-
+/*
   $(".meal-service").on("submit", function(event) {
     event.preventDefault();
 
@@ -166,6 +166,6 @@ window.onclick = function(event) {
     //   });
     // })
 });
-
+*/
 
 
