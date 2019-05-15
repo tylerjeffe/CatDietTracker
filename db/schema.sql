@@ -1,7 +1,8 @@
 /* File: schema.sql */
 
-CREATE DATABASE cat_diet_tracker_db;
-USE cat_diet_tracker_db;
+-- CREATE DATABASE cat_diet_tracker_db;
+-- USE cat_diet_tracker_db;
+USE j6jxgv1mso2dra1q;
 
 CREATE TABLE cats
 (
