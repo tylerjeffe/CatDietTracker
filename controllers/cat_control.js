@@ -16,7 +16,7 @@ cat_routes.get("/", function(req, res) {
       rooms: data[1]
     };
     console.log(data_object);
-    res.render("index", data_object);
+    res.render("login-view.handlebars", data_object);
   });
 });
 
@@ -50,6 +50,10 @@ cat_routes.get("/api/cats/:id", function(req, res) {
       meals_Sat: data[7],
       meal_items: data[8]
     }
+
+    console.log("\n\n" + JSON.stringify(data_object.meals_Sun) + "\n\n");
+    console.log("\n\n" + JSON.stringify(data_object.meals_Mon) + "\n\n");
+    console.log("\n\n" + JSON.stringify(data_object.meals_Tue) + "\n\n");
 
     // MOMENT.JS DATETIME TESTING - CONSTRUCTION ZONE
     // working with week() - Sunday - Saturday 
@@ -94,6 +98,7 @@ cat_routes.post("/api/cats", function(req, res) {
 });
 
 // update: 'cat' data - refactor
+/*
 cat_routes.put("/api/cats/:id", function(req, res) {
   var condition = req.params.id;
 
@@ -108,6 +113,7 @@ cat_routes.put("/api/cats/:id", function(req, res) {
   });
 
 });
+*/
 
 // delete: 'cat' data
 cat_routes.delete("/api/cats/:id", function(req, res) {

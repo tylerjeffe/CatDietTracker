@@ -2,7 +2,7 @@
 
 <div class="container card">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
 
 
             <h2 class="cat-name">{{this.cat_name}}</h2>
@@ -27,15 +27,24 @@
 
         </div>
 
-        <div class="col-md-6">
-            {{#each cats}}
-            <h2 id="cat-location">Location: Room #: {{this.cat_location_room}} - Kennel #: {{this.cat_location_kennel}}
-            </h2>
+        <div class="col-md-4">
+          {{#each cats}}
+            <h2 id="cat-location">Location: Room # {{this.cat_location_room}} - Kennel # {{this.cat_location_kennel}}</h2>
+          {{/each}}
         </div>
-        {{/each}}
+
+        <div class="col-md-4">
+          <div id="date-selector">
+            <form class="update-calendar-view">
+              <input type="text" id="datepicker" />
+              <button type="submit"></button>
+            </form>
+          </div>
+        </div>
 
     </div>
 
+    <!-- Headings: Days of Week -->
     <div class="row">
         <div class="col">
             <h2>Sun</h2>
@@ -60,8 +69,7 @@
         </div>
     </div>
 
-	
-
+    <!-- Data: Meal Data-->
     <div class="row">
         <div class="col">
             <span> {{#each meals_Sun}}
@@ -119,7 +127,6 @@
         <div class="col">
             <span> {{#each meals_Sat}}
 
-
                 Food offered:   {{this.meal_content_description}} <br>
                 Meal score:   {{this.meal_content_consumed}}
 
@@ -128,53 +135,6 @@
         </div>
     </div>
 
-
 </div>
-{{!-- <div class="row">
-    <div class="col">
-      <span id="meal-score-1"></span>
-    </div>
-    <div class="col">
-      <span id="meal-score-2"></span>
-    </div>
-    <div class="col">
-      <span id="meal-score-3"></span>
-    </div>
-    <div class="col">
-      <span id="meal-score-4"></span>
-    </div>
-    <div class="col">
-      <span id="meal-score-5"></span>
-    </div>
-    <div class="col">
-      <span id="meal-score-6"></span>
-    </div>
-    <div class="col">
-      <span id="meal-score-7"></span>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <span id="weight-1"></span>
-    </div>
-    <div class="col">
-      <span id="weight-2"></span>
-    </div>
-    <div class="col">
-      <span id="weight-3"></span>
-    </div>
-    <div class="col">
-      <span id="weight-4"></span>
-    </div>
-    <div class="col">
-      <span id="weight-5"></span>
-    </div>
-    <div class="col">
-      <span id="weight-6"></span>
-    </div>
-    <div class="col">
-      <span id="weight-7"></span>
-    </div>
-  </div>
-</div> --}}
 
+<script src="/assets/js/datepicker.min.js"></script>

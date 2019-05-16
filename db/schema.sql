@@ -1,8 +1,10 @@
 /* File: schema.sql */
 
--- CREATE DATABASE cat_diet_tracker_db;
--- USE cat_diet_tracker_db;
-USE j6jxgv1mso2dra1q;
+CREATE DATABASE cat_diet_tracker_db;
+USE cat_diet_tracker_db;
+
+-- UNCOMMENT FOR 'CLOUD SETUP' PURPOSES
+--USE j6jxgv1mso2dra1q;
 
 CREATE TABLE cats
 (

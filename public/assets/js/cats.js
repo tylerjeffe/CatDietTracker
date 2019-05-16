@@ -1,5 +1,12 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
+
+  $("#datepicker").datepicker();
+
+  $(".update-calendar-view").on("submit", function (event) {
+    alert($("#datepicker").val());
+  });
+
   $(".add-cat").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
@@ -60,7 +67,7 @@ $(function() {
   $(".goto-room").on("submit", function(event) {
     event.preventDefault();
 
-    window.location.href = "api/locations/" + $("#location_selection option:selected").val();
+    window.location.href = "/api/locations/" + $("#location_selection option:selected").val();
   });
 
   $(".delete-cat").on("click", function(event) {

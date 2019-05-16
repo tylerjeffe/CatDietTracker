@@ -38,6 +38,7 @@ meal_routes.post("/api/meals/feed", function(req, res) {
   console.log("inside meal_routes:post() . . .");
 
   const meal_date_time = moment().format("YYYY-MM-DD HH:mm:ss");
+  console.log("\n*** New Meal Timestamp: " + meal_date_time);
   
   // refactor - decouple
   meal.create([
