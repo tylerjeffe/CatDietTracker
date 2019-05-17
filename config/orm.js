@@ -65,7 +65,7 @@ var orm = {
       "AND m1.meal_date_time >= ? AND m1.meal_date_time <= ? " + 
       "ORDER BY m1.meal_id;";
 */
-
+/*
     const queryStringSun = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-05' AND m1.meal_date_time < '2019-05-06' " + 
                        "ORDER BY m1.meal_id, mc1.meal_content_id;",
@@ -87,8 +87,8 @@ var orm = {
           queryStringSat = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-11' AND m1.meal_date_time < '2019-05-12' " + 
                        "ORDER BY m1.meal_id, mc1.meal_content_id;";
+*/
 
-/*
     const queryStringSun = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-12' AND m1.meal_date_time < '2019-05-13' " + 
                        "ORDER BY m1.meal_id;",
@@ -110,7 +110,7 @@ var orm = {
           queryStringSat = queryStringMealsRoot +
                        "AND m1.meal_date_time >= '2019-05-18' AND m1.meal_date_time < '2019-05-19' " + 
                        "ORDER BY m1.meal_id;";
-*/
+
 
     var queryStringMealItems = "SELECT * FROM meal_content_items;";
 
