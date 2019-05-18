@@ -12,6 +12,11 @@ var cat = {
       cb(res);
     });
   },
+  one_view_by_date: function(route_cat_id, view_from_date, cb) {
+    orm.one_view_by_date("cats", route_cat_id, view_from_date, function(res) {
+      cb(res);
+    });
+  },
   // The variables cols and vals are arrays.
   create: function(cols, vals, cb) {
     orm.create("cats", cols, vals, function(res) {

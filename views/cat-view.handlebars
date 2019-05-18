@@ -35,10 +35,12 @@
 
         <div class="col-md-4">
           <div id="date-selector">
-            <form class="update-calendar-view">
+          {{#each cats}}    
+            <form class="update-calendar-view" data-id="{{this.cat_id}}">
               <input type="text" id="datepicker" />
               <button type="submit"></button>
             </form>
+          {{/each}}
           </div>
         </div>
 

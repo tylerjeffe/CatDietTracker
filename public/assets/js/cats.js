@@ -4,7 +4,34 @@ $(function() {
   $("#datepicker").datepicker();
 
   $(".update-calendar-view").on("submit", function (event) {
-    alert($("#datepicker").val());
+    //alert($("#datepicker").val());
+    event.preventDefault();
+
+    const id = $(this).data("id");
+    const date = $("#datepicker").val();
+
+    console.log("\nCat-ID: " + id + "\nDate: " + date);
+
+    //const beginDate = "2019-05-05",
+    //      endDate = "2019-05-06";
+
+    const newDate = {
+      theDate: date
+    };
+
+    // may not be necessary
+    const newTargetDate = date.split('/');
+
+    // Send the GET request.
+    $.ajax("/api/cats/" + id + "/" + newTargetDate[0] + "/" + newTargetDate[1] + "/" + newTargetDate[2], {
+      type: "GET"
+    }).then(
+      function() {
+        window.location.href = "/api/cats/" + id + "/" + newTargetDate[0] + "/" + newTargetDate[1] + "/" + newTargetDate[2];
+        //location.reload();
+      }
+    );
+
   });
 
   $(".add-cat").on("submit", function(event) {
