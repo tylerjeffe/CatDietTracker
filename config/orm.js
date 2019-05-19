@@ -74,7 +74,9 @@ var orm = {
     // refactor: set to current week by default
     let today = moment();
     let beginDate = moment(today).startOf('week').format("YYYY-MM-DD");
-    let endDate = moment(today).add(1,'days').format("YYYY-MM-DD");
+    console.log("\n*** SUN begin date -> " + beginDate);
+    let endDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
+    console.log("\n*** SUN end date -> " + endDate + " <--- ***");
 
     //let beginDate = moment().format("YYYY-MM-DD"),
     //    endDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
@@ -83,8 +85,10 @@ var orm = {
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
           " ORDER BY m1.meal_id, mc1.meal_content_id;";
 
-          beginDate = endDate;
-          endDate = getNextDay(beginDate);
+    console.log("\n *** queryStringSun:\n"+queryStringSun);
+
+    beginDate = endDate;
+    endDate = getNextDay(beginDate);
             
     const queryStringMon = queryStringMealsRoot +
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
