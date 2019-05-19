@@ -6,7 +6,9 @@ var meal = require("../models/meal.js");
 var meal_content = require("../models/meal_content");
 var meal_content_item = require("../models/meal_content_item.js");
 
-var moment = require("moment");
+//var moment = require("moment");
+var moment = require('moment-timezone');
+moment().tz("America/Los_Angeles").format();
 
 // create routes - set up logic within those routes where required
 // read: 'meal' data (all)

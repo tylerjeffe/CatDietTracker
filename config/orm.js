@@ -4,7 +4,7 @@ const connection = require("../config/connection.js");
 //var momentTZ = require("moment-timezone");
 
 var moment = require('moment-timezone');
-moment().tz("America/Los Angeles").format();
+moment().tz("America/Los_Angeles").format();
 
 // The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
 // ["?", "?", "?"].toString() => "?,?,?";
@@ -78,7 +78,7 @@ var orm = {
     // refactor: set to current week by default
     //let today = moment();
     //let today_with_timezone = moment().tz("Pacific/Fiji");
-    let today_with_timezone = moment().tz("America/Los Angeles");
+    let today_with_timezone = moment().tz("America/Los_Angeles");
     console.log("Today from localhost ??? :" + moment().format("YYYY-MM-DD hh:mm:ss"));
     let beginDate = moment(today_with_timezone).startOf('week').format("YYYY-MM-DD");
     console.log("\n*** SUN begin date -> " + beginDate);
