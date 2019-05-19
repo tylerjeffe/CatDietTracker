@@ -74,7 +74,7 @@ var orm = {
     // refactor: set to current week by default
     let today = moment();
     let beginDate = moment(today).startOf('week').format("YYYY-MM-DD");
-    let endDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
+    let endDate = moment(today).add(1,'days').format("YYYY-MM-DD");
 
     //let beginDate = moment().format("YYYY-MM-DD"),
     //    endDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
@@ -83,71 +83,47 @@ var orm = {
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
           " ORDER BY m1.meal_id, mc1.meal_content_id;";
 
-          beginDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
-          endDate = moment(endDate).add(1,'days').format("YYYY-MM-DD");                      
-      
+          beginDate = endDate;
+          endDate = getNextDay(beginDate);
+            
     const queryStringMon = queryStringMealsRoot +
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
           " ORDER BY m1.meal_id, mc1.meal_content_id;";
 
-          beginDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
-          endDate = moment(endDate).add(1,'days').format("YYYY-MM-DD");                      
-      
+          beginDate = endDate;
+          endDate = getNextDay(beginDate);
+            
     const queryStringTue = queryStringMealsRoot +
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
           " ORDER BY m1.meal_id, mc1.meal_content_id;";
 
-          beginDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
-          endDate = moment(endDate).add(1,'days').format("YYYY-MM-DD");                      
-      
+          beginDate = endDate;
+          endDate = getNextDay(beginDate);
+            
     const queryStringWed = queryStringMealsRoot +
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
           " ORDER BY m1.meal_id, mc1.meal_content_id;";
 
-          beginDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
-          endDate = moment(endDate).add(1,'days').format("YYYY-MM-DD");                      
-      
+          beginDate = endDate;
+          endDate = getNextDay(beginDate);
+           
     const queryStringThu = queryStringMealsRoot +
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
           " ORDER BY m1.meal_id, mc1.meal_content_id;";
 
-          beginDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
-          endDate = moment(endDate).add(1,'days').format("YYYY-MM-DD");                      
-      
+          beginDate = endDate;
+          endDate = getNextDay(beginDate);
+            
     const queryStringFri = queryStringMealsRoot +
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
           " ORDER BY m1.meal_id, mc1.meal_content_id;";
 
-          beginDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
-          endDate = moment(endDate).add(1,'days').format("YYYY-MM-DD");                      
-            
+          beginDate = endDate;
+          endDate = getNextDay(beginDate);
+                  
     const queryStringSat = queryStringMealsRoot +
           "AND m1.meal_date_time >= '" + beginDate + "' AND m1.meal_date_time < '" + endDate + "'" + 
           " ORDER BY m1.meal_id, mc1.meal_content_id;";
-
-/*          
-    const queryStringSun = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-12' AND m1.meal_date_time < '2019-05-13' " + 
-                       "ORDER BY m1.meal_id, mc1.meal_content_id;",
-          queryStringMon = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-13' AND m1.meal_date_time < '2019-05-14' " + 
-                       "ORDER BY m1.meal_id, mc1.meal_content_id;",
-          queryStringTue = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-14' AND m1.meal_date_time < '2019-05-15' " + 
-                       "ORDER BY m1.meal_id, mc1.meal_content_id;",
-          queryStringWed = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-15' AND m1.meal_date_time < '2019-05-16' " + 
-                       "ORDER BY m1.meal_id, mc1.meal_content_id;",
-          queryStringThu = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-16' AND m1.meal_date_time < '2019-05-17' " + 
-                       "ORDER BY m1.meal_id, mc1.meal_content_id;",
-          queryStringFri = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-17' AND m1.meal_date_time < '2019-05-18' " + 
-                       "ORDER BY m1.meal_id, mc1.meal_content_id;",
-          queryStringSat = queryStringMealsRoot +
-                       "AND m1.meal_date_time >= '2019-05-18' AND m1.meal_date_time < '2019-05-19' " + 
-                       "ORDER BY m1.meal_id, mc1.meal_content_id;";
-*/
 
     var queryStringMealItems = "SELECT * FROM meal_content_items;";
 
