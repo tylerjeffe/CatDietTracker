@@ -2,48 +2,48 @@
 
 <div class="container card">
     <div class="row">
-        <div class="col-md-4">
-
-
-            <h2 class="cat-name">{{this.cat_name}}</h2>
+        <div class="col-md-8">
             {{#each cats}}
-            <form class="feed-cat" data-id=" {{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}">
+            <h2 class="cat-name">{{this.cat_name}} (cat_id: {{this.cat_id}})</h2>
             {{/each}}
+        </div>
 
-      
+        <div class="col-md-4">
+          {{#each cats}}
+            <h2 id="cat-location">Room {{this.cat_location_room}} <hr> Kennel {{this.cat_location_kennel}}</h2>
+          {{/each}}
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-6">
+            <span id="date-selector">
+            {{#each cats}}    
+                <form class="update-calendar-view" data-id="{{this.cat_id}}">
+                    Date Selector: <input type="text" id="datepicker" />
+                    <button type="submit">Update Weekly View</button>
+                </form>
+            {{/each}}
+            </span>
+        </div>
+        <div class="col-md-6">
+            <span id="meal-selector">
+                {{#each cats}}
+                <form class="feed-cat" data-id=" {{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}">
+                {{/each}}
                 <p>Current Meal Selection:
                     <select id="meal-content-item-selection">
-                        {{#each meal_items}}
+                    {{#each meal_items}}
                         <option value="{{this.meal_content_item_id}}">{{this.meal_content_item_description}}</option>
-                        {{/each}}
+                    {{/each}}
                     </select>
                     {{#each cats}}
                     <button type="submit">Feed {{this.cat_name}}</button>
                     {{/each}}
                 </p>
-
-            </form>
-
+                </form>
+            </span>
         </div>
-
-        <div class="col-md-4">
-          {{#each cats}}
-            <h2 id="cat-location">Location: Room # {{this.cat_location_room}} - Kennel # {{this.cat_location_kennel}}</h2>
-          {{/each}}
-        </div>
-
-        <div class="col-md-4">
-          <div id="date-selector">
-          {{#each cats}}    
-            <form class="update-calendar-view" data-id="{{this.cat_id}}">
-              <input type="text" id="datepicker" />
-              <button type="submit"></button>
-            </form>
-          {{/each}}
-          </div>
-        </div>
-
     </div>
 
     <!-- Headings: Days of Week -->
