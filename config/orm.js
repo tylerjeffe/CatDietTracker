@@ -73,6 +73,7 @@ var orm = {
 */
     // refactor: set to current week by default
     let today = moment();
+    console.log("Today from localhosst:" + moment().format("YYYY-MM-DD hh:mm:ss"));
     let beginDate = moment(today).startOf('week').format("YYYY-MM-DD");
     console.log("\n*** SUN begin date -> " + beginDate);
     let endDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");

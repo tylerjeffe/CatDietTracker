@@ -6,6 +6,9 @@
             {{#each cats}}
             <h2 class="cat-name">{{this.cat_name}} (cat_id: {{this.cat_id}})</h2>
             {{/each}}
+            {{#each cats}}
+            <h3>Date Range:</h3>
+            {{/each}}
         </div>
 
         <div class="col-md-4">
@@ -29,7 +32,7 @@
         <div class="col-md-6">
             <span id="meal-selector">
                 {{#each cats}}
-                <form class="feed-cat" data-id=" {{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}">
+                <form class="feed-cat" data-id="{{this.cat_id}}" id="{{this.cat_id}}" name="meal-item-{{this.cat_id}}">
                 {{/each}}
                 <p>Current Meal Selection:
                     <select id="meal-content-item-selection">

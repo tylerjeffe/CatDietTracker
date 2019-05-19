@@ -57,18 +57,19 @@ cat_routes.get("/api/cats/:id", function(req, res) {
 
     // MOMENT.JS DATETIME TESTING - CONSTRUCTION ZONE
     // working with week() - Sunday - Saturday 
-    var tempDateTime = "2019-04-29T01:00:00.000Z";
-    var dateTimeObject = moment(tempDateTime).format("YYYY-MM-DD");
+    //var tempDateTime = "2019-04-29T01:00:00.000Z";
+    //var dateTimeObject = moment(tempDateTime).format("YYYY-MM-DD");
 
-    console.log("dateTimeObject: " + dateTimeObject);
-    var weeknumber = moment("12-25-1995", "MM-DD-YYYY").week();
-    console.log("Weeknumber: " + weeknumber);
+    //console.log("dateTimeObject: " + dateTimeObject);
+    //var weeknumber = moment("12-25-1995", "MM-DD-YYYY").week();
+    //console.log("Weeknumber: " + weeknumber);
 
     console.log("Beginning of Week: " + moment().startOf("week"));
     console.log("End of Week: " + moment().endOf("week"));
 
     // get week range
     const today = moment();
+    console.log("\n\nTODAY FROM SERVER = " + today.format("YYYY-MM-DD hh:mm:ss"));
     const from_date = moment(today).startOf('week');
     const to_date = moment(today).endOf('week');
     //    const from_date = moment(tempDateTime).startOf('week');
@@ -100,6 +101,10 @@ cat_routes.get("/api/cats/:id/:datemonth/:dateday/:dateyear", function(req, res)
   const view_from_date = moment(target_date).startOf('week').format("MM-DD-YYYY");
   const view_to_date = moment(target_date).endOf('week').format("MM-DD-YYYY");
   
+  let week_range = [];
+  week_range.push(view_from_date);
+  week_range.push(view_to_date); 
+
   console.log("Week Date Range: " + view_from_date + " - " + view_to_date);
 
   cat.one_view_by_date(route_cat_id, view_from_date, function(data) {
@@ -114,6 +119,7 @@ cat_routes.get("/api/cats/:id/:datemonth/:dateday/:dateyear", function(req, res)
       meals_Fri: data[6],
       meals_Sat: data[7],
       meal_items: data[8]
+      //week_from_date: { view_from_date }
     }
 
     console.log("\n\n" + JSON.stringify(data_object.meals_Sun) + "\n\n");
