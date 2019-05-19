@@ -69,6 +69,7 @@ cat_routes.get("/api/cats/:id", function(req, res) {
 
     // get week range
     const today = moment();
+    const today_with_tz = moment.tz(today, "America/Toronto");
     console.log("\n\nTODAY FROM SERVER = " + today.format("YYYY-MM-DD hh:mm:ss"));
     const from_date = moment(today).startOf('week');
     const to_date = moment(today).endOf('week');
@@ -77,7 +78,7 @@ cat_routes.get("/api/cats/:id", function(req, res) {
     console.log({
       from_date: from_date.toString(),
       today: moment().toString(),
-      to_date: to_date.toString(),
+      to_date: to_date.toString()
     });
     // END MOMENT.JS DATETIME TESTING - CONSTRUCTION ZONE
 
@@ -101,9 +102,9 @@ cat_routes.get("/api/cats/:id/:datemonth/:dateday/:dateyear", function(req, res)
   const view_from_date = moment(target_date).startOf('week').format("MM-DD-YYYY");
   const view_to_date = moment(target_date).endOf('week').format("MM-DD-YYYY");
   
-  let week_range = [];
-  week_range.push(view_from_date);
-  week_range.push(view_to_date); 
+  //let week_range = [];
+  //week_range.push(view_from_date);
+  //week_range.push(view_to_date); 
 
   console.log("Week Date Range: " + view_from_date + " - " + view_to_date);
 

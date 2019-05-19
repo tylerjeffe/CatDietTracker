@@ -1,6 +1,10 @@
 // Import MySQL connection.
 const connection = require("../config/connection.js");
-var moment = require("moment");
+//var moment = require("moment");
+//var momentTZ = require("moment-timezone");
+
+var moment = require('moment-timezone');
+moment().tz("America/Los_Angeles").format();
 
 // The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
 // ["?", "?", "?"].toString() => "?,?,?";
@@ -72,9 +76,10 @@ var orm = {
       "ORDER BY m1.meal_id;";
 */
     // refactor: set to current week by default
-    let today = moment();
-    console.log("Today from localhosst:" + moment().format("YYYY-MM-DD hh:mm:ss"));
-    let beginDate = moment(today).startOf('week').format("YYYY-MM-DD");
+    //let today = moment();
+    let today_with_timezone = moment().tz("America/Los Angeles");
+    console.log("Today from localhost ??? :" + moment().format("YYYY-MM-DD hh:mm:ss"));
+    let beginDate = moment(today_with_timezone).startOf('week').format("YYYY-MM-DD");
     console.log("\n*** SUN begin date -> " + beginDate);
     let endDate = moment(beginDate).add(1,'days').format("YYYY-MM-DD");
     console.log("\n*** SUN end date -> " + endDate + " <--- ***");
